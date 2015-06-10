@@ -6,6 +6,10 @@ var Player = function() {
 this.image = document.createElement("img");
 this.position = new Vector2();
 this.position.set(9*35, 0*35);
+this.velocityX = 0;
+this.velocityY = 0;
+this.angularVelocity = 0;
+this.velocity = new Vector2();
 this.width = 159;
 this.height = 163;
 //this.rotation = 0;
