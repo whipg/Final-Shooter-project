@@ -4,18 +4,18 @@ var Vector2 = function()
 	this.y = 0;
 };
 
-Vector2.prototype.Set = function(x,y)
+Vector2.prototype.set = function(x,y)
 {
 	this.x = x;
 	this.y = y;
 };
 
-Vector2.prototype.Add = function(a_x,a_y)
+Vector2.prototype.add = function(a_x,a_y)
 {
 	return (this.x + a_x),(this.y + a_y);
 }
 
-Vector2.prototype.Subtract = function(a_x,a_y)
+Vector2.prototype.subtract = function(a_x,a_y)
 {
 	return (this.x - a_x),(this.y - a_y);
 }
