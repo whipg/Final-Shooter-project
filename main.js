@@ -27,6 +27,11 @@ function getDeltaTime()
 var SCREEN_WIDTH = canvas.width;
 var SCREEN_HEIGHT = canvas.height;
 
+var player = new Player();
+var keyboard = new Keyboard();
+var enemy = new Enemy();
+var position = new Vector2();
+
 function run()
 {
     context.fillStyle = "#ccc";
