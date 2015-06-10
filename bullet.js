@@ -1,6 +1,6 @@
 var Bullet = function(x, y)
 {
-	image: document.createElement("img"),
+	this.image = document.createElement("img");
 	this.position = new Vector2();
 	this.position.Set(x, y);
 
@@ -8,7 +8,7 @@ var Bullet = function(x, y)
 
 	var BULLET_SPEED = 450;
 };
-bullet.image.src ="bullet.png";
+this.image.src ="bullet.png";
 
 Bullet.prototype.update = function(dt)
 {
