@@ -1,3 +1,7 @@
+
+
+var bullets = [];
+
 var Player = function() {
 this.image = document.createElement("img");
 this.x = canvas.width/2;
@@ -11,3 +15,18 @@ this.rotation = 0;
 this.image.src = "hero.png";
 };
 var player = new Player();
+
+Player.prototype.update = function(deltaTime)
+{
+if( typeof(this.rotation) == "undefined" )
+this.rotation = 0; 
+this.rotation += deltaTime;
+}
+Player.prototype.draw = function()
+{
+context.save();
+context.translate(this.x, this.y);
+context.rotate(this.rotation);
+context.drawImage(this.image, -this.width/2, -this.height/2);
+context.restore();
+}
