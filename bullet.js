@@ -1,12 +1,12 @@
-var bullet = {
+var Bullet = function(x, y)
+{
 	image: document.createElement("img"),
-	x: player.x,
-	y: player.y,
-	width: 5,
-	height: 5,
-	velocityX: 0,
-	velocityY: 0,
-	isDead: true
+	this.position = new Vector2();
+	this.position.Set(x, y);
+
+	this.velocity = new Vector2();
+
+	var BULLET_SPEED = 450;
 };
 bullet.image.src ="bullet.png";
 
