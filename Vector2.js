@@ -42,6 +42,6 @@ Vector2.prototype.Normalize = function ()
 }
 
 vec2 = new Vector2();
-vec2.Set(5,4);
+vec2.set(5,4);
 
 //if(circle1.radius + circle2.radius > Vector2(circle1 - circle2) * Vector2(circle1 - circle2))

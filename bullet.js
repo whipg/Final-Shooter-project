@@ -7,8 +7,10 @@ var Bullet = function(x, y)
 	this.velocity = new Vector2();
 
 	var BULLET_SPEED = 450;
+
+	this.image.src ="bullet.png";
 };
-this.image.src ="bullet.png";
+
 
 Bullet.prototype.update = function(dt)
 {

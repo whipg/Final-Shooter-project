@@ -36,7 +36,7 @@ function run()
 {
     context.fillStyle = "#ccc";
     context.fillRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(background, 0, 0);
+    //context.drawImage(background, 0, 0);
 }
  
 //-------------------- Don't modify anything below here
