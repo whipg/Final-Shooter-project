@@ -9,7 +9,7 @@ this.position.Set(9*35, 0*35);
 this.width = 159;
 this.height = 163;
 //this.rotation = 0;
-this.image.src = "hero.png";
+//this.image.src = "hero.png";
 };
 var player = new Player();
 
@@ -23,7 +23,7 @@ Player.prototype.draw = function()
 {
 context.save();
 context.translate(this.x, this.y);
-context.rotate(this.rotation);
-context.drawImage(this.image, -this.width/2, -this.height/2);
+//context.rotate(this.rotation);
+//context.drawImage(this.image, -this.width/2, -this.height/2);
 context.restore();
 }
