@@ -13,7 +13,7 @@ this.velocity = new Vector2();
 this.width = 159;
 this.height = 163;
 //this.rotation = 0;
-//this.image.src = "hero.png";
+this.image.src = "playerplaceholder.png";
 };
 var player = new Player();
 
