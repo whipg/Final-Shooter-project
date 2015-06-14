@@ -37,6 +37,9 @@ function run()
     context.fillStyle = "#ccc";
     context.fillRect(0, 0, canvas.width, canvas.height);
     //context.drawImage(background, 0, 0);
+
+    Player.update(dt);
+    Player.draw();
 }
  
 //-------------------- Don't modify anything below here
