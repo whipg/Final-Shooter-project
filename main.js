@@ -40,8 +40,8 @@ function run()
 
     var deltaTime = getDeltaTime();
 
-    Player.update(deltaTime);
-    Player.draw();
+    player.update(deltaTime);
+    player.draw();
 }
  
 //-------------------- Don't modify anything below here
