@@ -38,7 +38,9 @@ function run()
     context.fillRect(0, 0, canvas.width, canvas.height);
     //context.drawImage(background, 0, 0);
 
-    Player.update(dt);
+    var deltaTime = getDeltaTime();
+
+    Player.update(deltaTime);
     Player.draw();
 }
  
