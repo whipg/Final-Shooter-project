@@ -45,7 +45,6 @@ function run()
 
     var deltaTime = getDeltaTime();
 
-<<<<<<< HEAD
 	
 	for(var i=0; i<bullets.length; i++)
 	{
@@ -55,7 +54,6 @@ function run()
 		hit = true;
 	}
 	
-=======
     if(keyboard.isKeyDown(keyboard.KEY_SHOOT) == true)
     {
     context.fillStyle = "#F02936";
@@ -63,7 +61,6 @@ function run()
     context.fillText("Click!",SCREEN_WIDTH - 170, 35);
     }
 
->>>>>>> origin/master
     player.update(deltaTime);
     player.draw();
 	context.drawImage(player.image, SCREEN_WIDTH/2 - player.width/2, SCREEN_HEIGHT/2 - player.height/2);
