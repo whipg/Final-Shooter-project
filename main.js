@@ -45,7 +45,10 @@ function run()
 
     var deltaTime = getDeltaTime();
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> origin/master
 	for(var i=0; i<bullets.length; i++)
 	{
 		bullets[i].update(deltaTime);
@@ -53,7 +56,11 @@ function run()
 	{
 		hit = true;
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> origin/master
     if(keyboard.isKeyDown(keyboard.KEY_SHOOT) == true)
     {
     context.fillStyle = "#F02936";
