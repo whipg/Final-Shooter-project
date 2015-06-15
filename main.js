@@ -33,10 +33,6 @@ var enemy = new Enemy();
 var position = new Vector2();
 var hit= false;
 
-
-
-
-
 function run()
 {
     context.fillStyle = "#ccc";
