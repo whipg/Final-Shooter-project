@@ -1,5 +1,3 @@
-
-
 var bullets = [];
 
 var Player = function() {
