@@ -1,4 +1,6 @@
 var bullets = [];
+var LEFT = 0;
+var RIGHT = 1;
 
 var Player = function() {
 this.image = document.createElement("img");
@@ -10,6 +12,7 @@ this.angularVelocity = 0;
 this.velocity = new Vector2();
 this.width = 159;
 this.height = 163;
+//this.direction = LEFT;
 //this.rotation = 0;
 this.image.src = "playerplaceholder.png";
 };
@@ -17,7 +20,8 @@ var player = new Player();
 
 var PLAYER_SPEED = 300;
 Player.prototype.update = function(deltaTime)
-	{
+
+{
 		//this.sprite.update(deltaTime);
 		// we’ll insert code here later
 		 var left = false;
@@ -46,7 +50,28 @@ Player.prototype.update = function(deltaTime)
 			//if(this.sprite.currentAnimation != ANIM_WALK_RIGHT)
 				//this.sprite.setAnimation(ANIM_WALK_RIGHT);
 		 }
+		 
+		 var wasleft = this.velocity.x < 0;
+		 var wasright = this.velocity.x > 0;
+		 var falling = this.falling;
+		 var ddx = 0; // acceleration
+		 //var ddy = GRAVITY;
+
+		 if (left)
+		 	ddx = ddx - ACCEL; // player wants to go left
+		 else if (wasleft)
+		 	ddx = ddx + FRICTION; // player was going left, but not any more
+		 if (right)
+		 	ddx = ddx + ACCEL; // player wants to go right
+		 else if (wasright)
+		 	ddx = ddx - FRICTION; // player was going right, but not any more
+		// if (jump && !this.jumping && !falling)
+		 {
+			// ddy = ddy - JUMP; // apply an instantaneous (large) vertical impulse
+			 //this.jumping = true;
+		 }
 	}
+		
 		
 Player.prototype.draw = function()
 {
