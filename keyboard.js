@@ -12,7 +12,7 @@ var Keyboard = function() {
 	this.KEY_RIGHT = 68;
 	this.KEY_DOWN = 83;
 
-	this.KEY_SHOOT = 1;
+	this.KEY_SHOOT = 32;
 };
 
 Keyboard.prototype.onKeyDown = function(evt)

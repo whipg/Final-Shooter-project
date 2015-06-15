@@ -32,6 +32,8 @@ var keyboard = new Keyboard();
 var enemy = new Enemy();
 var position = new Vector2();
 
+
+
 function run()
 {
     context.fillStyle = "#ccc";
@@ -39,6 +41,13 @@ function run()
     //context.drawImage(background, 0, 0);
 
     var deltaTime = getDeltaTime();
+
+    if(keyboard.isKeyDown(keyboard.KEY_SHOOT) == true)
+    {
+    context.fillStyle = "#F02936";
+    context.font = "14px Arial"
+    context.fillText("Click!",SCREEN_WIDTH - 170, 35);
+    }
 
     player.update(deltaTime);
     player.draw();
