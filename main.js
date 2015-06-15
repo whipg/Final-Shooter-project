@@ -33,6 +33,14 @@ var enemy = new Enemy();
 var position = new Vector2();
 var hit= false;
 
+//Physics
+var METER = 35;
+var MAXDX = METER * 10;
+var MAXDY = METER * 15;
+var ACCEL = MAXDX * 2;
+var FRICTION = MAXDX * 6;
+var JUMP = METER * 1500;
+
 function run()
 {
     context.fillStyle = "#ccc";
@@ -41,20 +49,20 @@ function run()
 
     var deltaTime = getDeltaTime();
 
-	//for(var i=0; i<bullets.length; i++)
-	//{
-	//	bullets[i].update(deltaTime);
-		//if( bullets[i].position.x - worldOffsetX < 0 || bullets[i].position.x - worldOffsetX > SCREEN_WIDTH)		
-	//{
-	//	hit = true;
-	//}
+	/*for(var i=0; i<bullets.length; i++)
+	{
+		bullets[i].update(deltaTime);
+		if( bullets[i].position.x - worldOffsetX < 0 || bullets[i].position.x - worldOffsetX > SCREEN_WIDTH)		
+	{
+		hit = true;
+	}
 
-    //if(keyboard.isKeyDown(keyboard.KEY_SHOOT) == true)
-   // {
-   // context.fillStyle = "#F02936";
-    //context.font = "14px Arial"
-    //context.fillText("Click!",SCREEN_WIDTH - 170, 35);
-   // }
+    if(keyboard.isKeyDown(keyboard.KEY_SHOOT) == true)
+    {
+    context.fillStyle = "#F02936";
+    context.font = "14px Arial"
+    context.fillText("Click!",SCREEN_WIDTH - 170, 35);
+    }*/
 	
     player.update(deltaTime);
     player.draw();
