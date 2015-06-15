@@ -35,6 +35,8 @@ var hit= false;
 
 
 
+
+
 function run()
 {
     context.fillStyle = "#ccc";
