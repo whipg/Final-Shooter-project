@@ -31,6 +31,7 @@ var player = new Player();
 var keyboard = new Keyboard();
 var enemy = new Enemy();
 var position = new Vector2();
+var hit= false;
 
 function run()
 {
@@ -40,6 +41,15 @@ function run()
 
     var deltaTime = getDeltaTime();
 
+	
+	for(var i=0; i<bullets.length; i++)
+	{
+		bullets[i].update(deltaTime);
+		if( bullets[i].position.x - worldOffsetX < 0 || bullets[i].position.x - worldOffsetX > SCREEN_WIDTH)		
+	{
+		hit = true;
+	}
+	
     player.update(deltaTime);
     player.draw();
 	context.drawImage(player.image, SCREEN_WIDTH/2 - player.width/2, SCREEN_HEIGHT/2 - player.height/2);
