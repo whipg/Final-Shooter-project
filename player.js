@@ -5,7 +5,7 @@ var bullets = [];
 var Player = function() {
 this.image = document.createElement("img");
 this.position = new Vector2();
-this.position.set(9*35, 0*35);
+//this.position.set(9*35, 0*35);
 this.velocityX = 0;
 this.velocityY = 0;
 this.angularVelocity = 0;
