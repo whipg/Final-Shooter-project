@@ -42,7 +42,7 @@ function run()
 
     player.update(deltaTime);
     player.draw();
-	context.drawImage(, SCREEN_WIDTH/2 - playerplaceholder.width/2, SCREEN_HEIGHT/2 - playerplaceholder.height/2);
+	context.drawImage(player.image, SCREEN_WIDTH/2 - player.width/2, SCREEN_HEIGHT/2 - player.height/2);
 }
  
 //-------------------- Don't modify anything below here
