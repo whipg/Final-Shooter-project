@@ -3,82 +3,67 @@ var LEFT = 0;
 var RIGHT = 1;
 
 var Player = function(){
-	image:document.createElement("img"),
-	 this.x = 200;
-  this.y = 200; 
+this.sprite = new Sprite("playerplaceholder.png");
+this.sprite.buildAnimation(1, 1, 32, 32, -1, [0]);
+this.sprite.setAnimationOffset(0, 0, 0);
+this.sprite.setLoop(0, false);
+
+this.position = new Vector2();
+this.position.set(200, 200);
+
 this.width = 93
 this.height = 80
-this.directionX =0
-this.directionY =0
-angularDirection =0
-rotation =0
-//isDead: false
+
 };
-this.sprite = new Sprite(); "playerplaceholder.png"
+
 var player = new Player();
 
 var PLAYER_SPEED = 100;
-function onKeyDown(event)
-{
-        if(event.keyCode == KEY_UP)
-        {
-                player.directionY = 1;
-        }
-        if(event.keyCode == KEY_DOWN)
-        {
-                player.directionY = -1;
-        }
-        if(event.keyCode == KEY_LEFT)
-        {
-                player.angularDirection = -1;
-        }
-        if(event.keyCode == KEY_RIGHT)
-        {
-                player.angularDirection = 1;
-        }
-        if(event.keyCode == KEY_SPACE && shootTimer <= 0)
-        {
-                shootTimer += 0.3;
-                playerShoot();
-        }
-        if(event.keyCode == KEY_SPACE)
-        {
-                shoot = true;
-        }
-}
 
-
-function onKeyUp(event)
-{
-        if(event.keyCode == KEY_UP)
-        {      
-                player.directionY = 0;
-        }
-        if(event.keyCode == KEY_DOWN)
-        {      
-                player.directionY = 0;
-        }
-        if(event.keyCode == KEY_LEFT)
-        {
-                player.angularDirection = 0;
-        }
-        if(event.keyCode == KEY_RIGHT)
-        {
-                player.angularDirection = 0;
-        }
-        if(event.keyCode == KEY_SPACE)
-        {
-                shoot = false;
-        }
-}
 	
+Player.prototype.update = function()
+{
+	this.sprite.update(deltaTime);
+
+    if(keyboard.isKeyDown(keyboard.KEY_UP) == true)
+    {
+        player.directionY = 1;
+    }
+    if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true)
+    {
+        player.directionY = -1;
+    }
+    if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true)
+    {
+        player.angularDirection = -1;
+    }
+    if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true)
+    {
+        player.angularDirection = 1;
+    }
+
+
+    if(keyboard.isKeyUp(keyboard.KEY_UP) == true)
+    {
+        player.directionY = 0;
+    }
+    if(keyboard.isKeyUp(keyboard.KEY_DOWN) == true)
+    {
+        player.directionY = 0;
+    }
+    if(keyboard.isKeyUp(keyboard.KEY_LEFT) == true)
+    {
+        player.angularDirection = 0;
+    }
+    if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true)
+    {
+        player.angularDirection = 1;
+    }
+
+}
 		
 		
 Player.prototype.draw = function()
 {
-context.save();
-context.translate(this.x, this.y);
-//context.rotate(this.rotation);
-//context.drawImage(this.image, -this.width/2, -this.height/2);
-context.restore();
+	this.sprite.draw(context, this.position.x, this.position.y);
 }
