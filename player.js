@@ -14,9 +14,9 @@ angularDirection =0
 rotation =0
 //isDead: false
 };
-
+this.sprite = new Sprite(); "playerplaceholder.png"
 var player = new Player();
-this.image.src = "playerplaceholder.png"
+
 var PLAYER_SPEED = 100;
 function onKeyDown(event)
 {
