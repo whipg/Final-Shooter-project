@@ -66,6 +66,7 @@ function run()
     context.fillText("Click!",SCREEN_WIDTH - 170, 35);
     }*/
 
+
     player.draw();
 	context.drawImage(player.image, SCREEN_WIDTH/2 - player.width/2, SCREEN_HEIGHT/2 - player.height/2);
 }

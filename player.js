@@ -18,7 +18,7 @@ this.image.src = "playerplaceholder.png";
 };
 var player = new Player();
 
-var PLAYER_SPEED = 2;
+var PLAYER_SPEED = 100;
 function onKeyDown(event)
 {
         if(event.keyCode == KEY_UP)
