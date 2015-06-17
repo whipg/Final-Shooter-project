@@ -4,19 +4,19 @@ var RIGHT = 1;
 
 var Player = function(){
 	image:document.createElement("img"),
-	//x: SCREEN_WIDTH/2
-//y: SCREEN_HEIGHT/2
+	 this.x = 200;
+  this.y = 200; 
 this.width = 93
 this.height = 80
 this.directionX =0
 this.directionY =0
 angularDirection =0
 rotation =0
-
 //isDead: false
 };
+
 var player = new Player();
-//player.image.src = "playerplaceholder.png"
+this.image.src = "playerplaceholder.png"
 var PLAYER_SPEED = 100;
 function onKeyDown(event)
 {

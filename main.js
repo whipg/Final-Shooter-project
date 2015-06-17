@@ -41,7 +41,7 @@ var ACCEL = MAXDX * 2;
 var FRICTION = MAXDX * 6;
 var JUMP = METER * 1500;
 
-this.image.src = "playerplaceholder.png"
+
 
 function run()
 {
