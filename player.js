@@ -4,15 +4,15 @@ var RIGHT = 1;
 
 var Player = function(){
 this.sprite = new Sprite("playerplaceholder.png");
-this.sprite.buildAnimation(1, 1, 32, 32, -1, [0]);
+this.sprite.buildAnimation(1, 1, 48, 48, -1, [0]);
 this.sprite.setAnimationOffset(0, 0, 0);
 this.sprite.setLoop(0, false);
 
 this.position = new Vector2();
 this.position.set(200, 200);
 
-this.width = 93
-this.height = 80
+this.width = 48
+this.height = 48
 
 };
 
