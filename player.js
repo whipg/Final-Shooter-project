@@ -18,71 +18,61 @@ this.image.src = "playerplaceholder.png";
 };
 var player = new Player();
 
-var PLAYER_SPEED = 300;
-Player.prototype.update = function(deltaTime)
-
+var PLAYER_SPEED = 2;
+function onKeyDown(event)
 {
-		//this.sprite.update(deltaTime);
-		// we’ll insert code here later
-		 var left = false;
-		 var right = false;
-		 var jump = false;
-		 var down = false;
-		 var up = false;
-		 var shoot = false;
+        if(event.keyCode == KEY_UP)
+        {
+                player.directionY = 1;
+        }
+        if(event.keyCode == KEY_DOWN)
+        {
+                player.directionY = -1;
+        }
+        if(event.keyCode == KEY_LEFT)
+        {
+                player.angularDirection = -1;
+        }
+        if(event.keyCode == KEY_RIGHT)
+        {
+                player.angularDirection = 1;
+        }
+        if(event.keyCode == KEY_SPACE && shootTimer <= 0)
+        {
+                shootTimer += 0.3;
+                playerShoot();
+        }
+        if(event.keyCode == KEY_SPACE)
+        {
+                shoot = true;
+        }
+}
 
-		// check keypress events
-		 if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true) 
-		 {
-			 this.x -= PLAYER_SPEED * deltaTime;
-		 	left = true;
-			this.direction = LEFT;
-			//if(this.sprite.currentAnimation != ANIM_WALK_LEFT)
-				//this.sprite.setAnimation(ANIM_WALK_LEFT);
-		 }
+	 
+function onKeyUp(event)
+{
+        if(event.keyCode == KEY_UP)
+        {      
+                player.directionY = 0;
+        }
+        if(event.keyCode == KEY_DOWN)
+        {      
+                player.directionY = 0;
+        }
+        if(event.keyCode == KEY_LEFT)
+        {
+                player.angularDirection = 0;
+        }
+        if(event.keyCode == KEY_RIGHT)
+        {
+                player.angularDirection = 0;
+        }
+        if(event.keyCode == KEY_SPACE)
+        {
+                shoot = false;
+        }
+}
 	
-
-		  else if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true) 
-		 {
-			 this.x += PLAYER_SPEED * deltaTime;
-		 	right = true;
-			this.direction = RIGHT;
-			//if(this.sprite.currentAnimation != ANIM_WALK_RIGHT)
-				//this.sprite.setAnimation(ANIM_WALK_RIGHT);
-		 }
-		 
-		 var wasleft = this.velocity.x < 0;
-		 var wasright = this.velocity.x > 0;
-		 var falling = this.falling;
-		 var ddx = 0; // acceleration
-		 //var ddy = GRAVITY;
-
-		 if (left)
-		 	ddx = ddx - ACCEL; // player wants to go left
-		 else if (wasleft)
-		 	ddx = ddx + FRICTION; // player was going left, but not any more
-		 if (right)
-		 	ddx = ddx + ACCEL; // player wants to go right
-		 else if (wasright)
-		 	ddx = ddx - FRICTION; // player was going right, but not any more
-		// if (jump && !this.jumping && !falling)
-		 {
-			// ddy = ddy - JUMP; // apply an instantaneous (large) vertical impulse
-			 //this.jumping = true;
-		 }
-		  // calculate the new position and velocity:
-		 this.position.y = Math.floor(this.position.y + (deltaTime * this.velocity.y));
-		 this.position.x = Math.floor(this.position.x + (deltaTime * this.velocity.x));
-		 //this.velocity.x = bound(this.velocity.x + (deltaTime * ddx), -MAXDX, MAXDX);
-		// this.velocity.y = bound(this.velocity.y + (deltaTime * ddy), -MAXDY, MAXDY);
-
-		 if ((wasleft && (this.velocity.x > 0)) ||
-			 (wasright && (this.velocity.x < 0)))
-		 {
-			 // clamp at zero to prevent friction from making us jiggle side to side
-			 this.velocity.x = 0;
-		 }
-	}
 		
 		
 Player.prototype.draw = function()
