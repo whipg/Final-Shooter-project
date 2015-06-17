@@ -68,7 +68,7 @@ function run()
     context.fillText("Click!",SCREEN_WIDTH - 170, 35);
     }*/
 
-    player.update(deltaTime);
+    //player.update(deltaTime);
     player.draw();
 	
 }

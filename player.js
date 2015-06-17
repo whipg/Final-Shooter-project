@@ -21,45 +21,58 @@ var player = new Player();
 var PLAYER_SPEED = 100;
 
 	
-Player.prototype.update = function()
+function onKeyDown(event)
 {
-	this.sprite.update(deltaTime);
+        if(event.keyCode == KEY_UP)
+        {
+                player.directionY = 1;
+        }
+        if(event.keyCode == KEY_DOWN)
+        {
+                player.directionY = -1;
+        }
+        if(event.keyCode == KEY_LEFT)
+        {
+                player.angularDirection = -1;
+        }
+        if(event.keyCode == KEY_RIGHT)
+        {
+                player.angularDirection = 1;
+        }
+        if(event.keyCode == KEY_SPACE && shootTimer <= 0)
+        {
+                shootTimer += 0.3;
+                playerShoot();
+        }
+        if(event.keyCode == KEY_SPACE)
+        {
+                shoot = true;
+        }
+}
 
-    if(keyboard.isKeyDown(keyboard.KEY_UP) == true)
-    {
-        player.directionY = 1;
-    }
-    if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true)
-    {
-        player.directionY = -1;
-    }
-    if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true)
-    {
-        player.angularDirection = -1;
-    }
-    if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true)
-    {
-        player.angularDirection = 1;
-    }
-
-
-    if(keyboard.isKeyUp(keyboard.KEY_UP) == true)
-    {
-        player.directionY = 0;
-    }
-    if(keyboard.isKeyUp(keyboard.KEY_DOWN) == true)
-    {
-        player.directionY = 0;
-    }
-    if(keyboard.isKeyUp(keyboard.KEY_LEFT) == true)
-    {
-        player.angularDirection = 0;
-    }
-    if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true)
-    {
-        player.angularDirection = 1;
-    }
-
+	 
+function onKeyUp(event)
+{
+        if(event.keyCode == KEY_UP)
+        {      
+                player.directionY = 0;
+        }
+        if(event.keyCode == KEY_DOWN)
+        {      
+                player.directionY = 0;
+        }
+        if(event.keyCode == KEY_LEFT)
+        {
+                player.angularDirection = 0;
+        }
+        if(event.keyCode == KEY_RIGHT)
+        {
+                player.angularDirection = 0;
+        }
+        if(event.keyCode == KEY_SPACE)
+        {
+                shoot = false;
+        }
 }
 		
 		
