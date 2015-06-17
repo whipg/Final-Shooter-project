@@ -2,22 +2,21 @@ var bullets = [];
 var LEFT = 0;
 var RIGHT = 1;
 
-var Player = function() {
-this.image = document.createElement("img");
-this.position = new Vector2();
-//this.position.set(9*35, 0*35);
-this.velocityX = 0;
-this.velocityY = 0;
-this.angularVelocity = 0;
-this.velocity = new Vector2();
-this.width = 159;
-this.height = 163;
-//this.direction = LEFT;
-//this.rotation = 0;
-this.image.src = "playerplaceholder.png";
+var Player = function(){
+	image:document.createElement("img"),
+	//x: SCREEN_WIDTH/2
+//y: SCREEN_HEIGHT/2
+this.width = 93
+this.height = 80
+this.directionX =0
+this.directionY =0
+angularDirection =0
+rotation =0
+
+//isDead: false
 };
 var player = new Player();
-
+//player.image.src = "playerplaceholder.png"
 var PLAYER_SPEED = 100;
 function onKeyDown(event)
 {
@@ -48,7 +47,7 @@ function onKeyDown(event)
         }
 }
 
-	 
+
 function onKeyUp(event)
 {
         if(event.keyCode == KEY_UP)
