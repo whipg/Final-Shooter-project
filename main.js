@@ -147,9 +147,9 @@ function initialize() {
         cells[layerIdx] = [];
         var idx = 0;        
     idx = 0;
-    for(var y = 0; y < level1.layers[LAYER_OBJECT_ENEMIES].height; y++) {
-        for(var x = 0; x < level1.layers[LAYER_OBJECT_ENEMIES].width; x++) {
-            if(level1.layers[LAYER_OBJECT_ENEMIES].data[idx] != 0) {
+    for(var y = 0; y < map.layers[LAYER_OBJECT_ENEMIES].height; y++) {
+        for(var x = 0; x < map.layers[LAYER_OBJECT_ENEMIES].width; x++) {
+            if(map.layers[LAYER_OBJECT_ENEMIES].data[idx] != 0) {
                 var px = tileToPixel(x);
                 var py = tileToPixel(y);
                 var e = new Enemy(px, py);
@@ -162,10 +162,10 @@ function initialize() {
     //TRIGGERED
     cells[LAYER_OBJECT_TRIGGERS] = [];
     idx = 0;
-    for(var y = 0; y < level1.layers[LAYER_OBJECT_TRIGGERS].height; y++) {
+    for(var y = 0; y < map.layers[LAYER_OBJECT_TRIGGERS].height; y++) {
         cells[LAYER_OBJECT_TRIGGERS][y] = [];
-        for(var x = 0; x < level1.layers[LAYER_OBJECT_TRIGGERS].width; x++) {
-            if(level1.layers[LAYER_OBJECT_TRIGGERS].data[idx] != 0) {
+        for(var x = 0; x < map.layers[LAYER_OBJECT_TRIGGERS].width; x++) {
+            if(map.layers[LAYER_OBJECT_TRIGGERS].data[idx] != 0) {
                 cells[LAYER_OBJECT_TRIGGERS][y][x] = 1;
                 cells[LAYER_OBJECT_TRIGGERS][y-1][x] = 1;
                 cells[LAYER_OBJECT_TRIGGERS][y-1][x+1] = 1;
@@ -213,7 +213,7 @@ function run()
  //onKeyDown(event);
  //onKeyUp(event);
 }
-
+initialize();
  
 //-------------------- Don't modify anything below here
 // This code will set up the framework so that the 'run' function is
