@@ -18,7 +18,6 @@ this.height = 48
 
 this.velocity = new Vector2();
 
-this.velocity = new Vector2();
 this.width = 93
 this.height = 80
 this.direction = LEFT;
@@ -206,8 +205,8 @@ Player.prototype.update = function(deltaTime)
 				this.position.x = tileToPixel(tx + 1);
 				this.velocity.x = 0; // stop horizontal velocity
 			}
-		}
-	}*/		
+		}*/
+		
 		
 Player.prototype.draw = function()
 {
