@@ -40,7 +40,17 @@ var MAXDY = METER * 15;
 var ACCEL = MAXDX * 2;
 var FRICTION = MAXDX * 6;
 var JUMP = METER * 1500;
+var GRAVITY = METER * 9.8 * 6;
 
+
+function bound(value, min, max)
+{
+	if(value < min)
+		return min;
+	if(value > max)
+		return max;
+	return value;
+}
 
 
 function run()
@@ -51,7 +61,7 @@ function run()
 
     var deltaTime = getDeltaTime();
 
-	//player.update(deltaTime);
+	player.update(deltaTime);
 	
 	/*for(var i=0; i<bullets.length; i++)
 	{
@@ -70,7 +80,8 @@ function run()
 
     //player.update(deltaTime);
     player.draw();
-	
+ //onKeyDown(event);
+ //onKeyUp(event);
 }
 
  
