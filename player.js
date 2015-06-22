@@ -17,11 +17,10 @@ this.width = 48
 this.height = 48
 
 this.velocity = new Vector2();
-
-this.velocity = new Vector2();
 this.width = 93
 this.height = 80
-this.direction = LEFT;
+
+this.moveVector = new Vector2();
 };
 
 var player = new Player();
@@ -32,7 +31,7 @@ Player.prototype.update = function(deltaTime)
 {
 	this.sprite.update(deltaTime);
 
-	var left = false;
+	/*var left = false;
 	var right = false;
 	var up = false;
 	var down = false;
@@ -44,7 +43,6 @@ Player.prototype.update = function(deltaTime)
 	else if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true) {
 		right = true;
 		this.direction = RIGHT;
-		right = true;
 	}
 	else if(keyboard.isKeyDown(keyboard.KEY_UP) == true) {
 		up = true;
@@ -54,6 +52,7 @@ Player.prototype.update = function(deltaTime)
 		down = true;
 		this.direction = DOWN;
 	}
+ 
 
 	var wasleft = this.velocity.x < 0;
 	var wasright = this.velocity.x > 0;
@@ -65,12 +64,12 @@ Player.prototype.update = function(deltaTime)
 	if (left)
 		ddx = ddx - ACCEL;
 	else if (wasleft)
-		ddx = ddx + FRICTION;
+		ddx = 0;
 
 	if(right)
 		ddx = ddx + ACCEL;
 	else if (wasright)
-		ddx = ddx - FRICTION;
+		ddx = 0;
 
 	this.position.y = Math.floor(this.position.y +(deltaTime * this.velocity.y));
 	this.position.x = Math.floor(this.position.x +(deltaTime * this.velocity.x));
@@ -82,7 +81,7 @@ Player.prototype.update = function(deltaTime)
 	{
 		this.velocity.x = 0;
 	}
-
+*/
 
 }
 	
