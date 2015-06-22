@@ -28,7 +28,7 @@ var player = new Player();
 
 var PLAYER_SPEED = 300;
 
-Player.prototype.update = function()
+Player.prototype.update = function(deltaTime)
 {
 	this.sprite.update(deltaTime);
 
@@ -38,11 +38,13 @@ Player.prototype.update = function()
 	var down = false;
 
     if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true) {
-		this.position.Add(1, 0);
+		this.direction = LEFT;
+		left = true;
 	}
 	else if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true) {
 		right = true;
 		this.direction = RIGHT;
+		right = true;
 	}
 	else if(keyboard.isKeyDown(keyboard.KEY_UP) == true) {
 		up = true;
@@ -60,7 +62,7 @@ Player.prototype.update = function()
 	var ddx = 0;
 	var ddy = 0;
 
-	/*if (left)
+	if (left)
 		ddx = ddx - ACCEL;
 	else if (wasleft)
 		ddx = ddx + FRICTION;
@@ -79,12 +81,12 @@ Player.prototype.update = function()
 	   (wasright && (this.velocity.x < 0)))
 	{
 		this.velocity.x = 0;
-	}*/
+	}
 
 
 }
 	
-Player.prototype.update = function(deltaTime)
+/*Player.prototype.update = function(deltaTime)
 	{
 		this.sprite.update(deltaTime);
 		// we’ll insert code here later
@@ -140,7 +142,7 @@ Player.prototype.update = function(deltaTime)
 			 // clamp at zero to prevent friction from making us jiggle side to side
 			 this.velocity.x = 0;
 		 }
-	}
+	}*/
 		// collision detection
 		// Our collision detection logic is greatly simplified by the fact that the
 		// player is a rectangle and is exactly the same size as a single tile.
