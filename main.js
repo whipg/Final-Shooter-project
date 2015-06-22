@@ -34,7 +34,7 @@ var position = new Vector2();
 var hit= false;
 
 //Physics
-var METER = 35;
+var METER = 8;
 var MAXDX = METER * 10;
 var MAXDY = METER * 15;
 var ACCEL = MAXDX * 2;
