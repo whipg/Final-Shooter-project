@@ -112,7 +112,7 @@ Player.prototype.update = function(deltaTime)
 		 var wasright = this.velocity.x > 0;
 		 var falling = this.falling;
 		 var ddx = 0; // acceleration
-		 var ddy = GRAVITY;
+		 var ddy = 0;
 
 		 if (left)
 		 	ddx = ddx - ACCEL; // player wants to go left
