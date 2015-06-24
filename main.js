@@ -36,6 +36,7 @@ var hit= false;
 var LAYER_COUNT = 2;
 var LAYER_BACKGROUND = 0;
 var LAYER_OBJECT_ENEMIES = 1;
+//var LAYER_OBJECT_TRIGGERS = 2;
 
 var MAP = {tw:100, th:100};
 var TILE = 32;
@@ -155,11 +156,32 @@ function initialize() {
                 enemies.push(e);
             }
             idx++;
-            }
         }
     }
-}
 
+    /*TRIGGERED
+    cells[LAYER_OBJECT_TRIGGERS] = [];
+    idx = 0;
+    for(var y = 0; y < map.layers[LAYER_OBJECT_TRIGGERS].height; y++) {
+        cells[LAYER_OBJECT_TRIGGERS][y] = [];
+        for(var x = 0; x < map.layers[LAYER_OBJECT_TRIGGERS].width; x++) {
+            if(map.layers[LAYER_OBJECT_TRIGGERS].data[idx] != 0) {
+                cells[LAYER_OBJECT_TRIGGERS][y][x] = 1;
+                cells[LAYER_OBJECT_TRIGGERS][y-1][x] = 1;
+                cells[LAYER_OBJECT_TRIGGERS][y-1][x+1] = 1;
+                cells[LAYER_OBJECT_TRIGGERS][y][x+1] = 1;
+            }
+            else if(cells[LAYER_OBJECT_TRIGGERS][y][x] != 1) {
+                // if we haven't set this cell's value, then set it to 0 now
+                cells[LAYER_OBJECT_TRIGGERS][y][x] = 0;
+            }
+            idx++;
+        }
+    }
+    }*/
+
+}
+}
 
 function run()
 {
@@ -179,7 +201,6 @@ function run()
 	{
 		hit = true;
 	}
-
     if(keyboard.isKeyDown(keyboard.KEY_SHOOT) == true)
     {
     context.fillStyle = "#F02936";
