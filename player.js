@@ -31,6 +31,31 @@ Player.prototype.update = function(deltaTime)
 {
 	this.sprite.update(deltaTime);
 
+	if((keyboard.isKeyDown(keyboard.KEY_LEFT)) != (keyboard.isKeyDown(keyboard.KEY_RIGHT)))
+	{
+		if(keyboard.isKeyDown(keyboard.KEY_RIGHT))
+		{
+			this.moveVector += 1;
+		}
+		else
+		{
+			this.moveVector += -1;
+		}
+	}
+	if((keyboard.isKeyDown(keyboard.KEY_UP)) != (keyboard.isKeyDown(keyboard.KEY_UP)))
+	{
+		if(keyboard.isKeyDown(keyboard.KEY_DOWN))
+		{
+			this.moveVector += -1;
+		}
+		else
+		{
+			this.moveVector += 1;
+		}
+	}
+
+	this.position += this.moveVector;
+
 	/*var left = false;
 	var right = false;
 	var up = false;
