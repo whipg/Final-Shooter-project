@@ -159,7 +159,7 @@ function initialize() {
         }
     }
 }
-}
+
 
 function run()
 {
