@@ -17,10 +17,9 @@ this.width = 48
 this.height = 48
 
 this.velocity = new Vector2();
-this.width = 93
-this.height = 80
 
 this.moveVector = new Vector2();
+this.moveVector.set(this.position.x, this.position.y);
 };
 
 Player.prototype.update = function(deltaTime)
@@ -31,11 +30,11 @@ Player.prototype.update = function(deltaTime)
 	{
 		if(keyboard.isKeyDown(keyboard.KEY_RIGHT))
 		{
-			Player.moveVector += 1;
+			Player.moveVector.x += 1;
 		}
 		else
 		{
-			Player.moveVector += -1;
+			Player.moveVector.x += -1;
 		}
 	}
 	if((keyboard.isKeyDown(keyboard.KEY_UP)) != (keyboard.isKeyDown(keyboard.KEY_UP)))
