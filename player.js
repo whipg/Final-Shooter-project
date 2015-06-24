@@ -17,8 +17,6 @@ this.width = 48
 this.height = 48
 
 this.velocity = new Vector2();
-this.width = 93
-this.height = 80
 
 this.moveVector = new Vector2();
 };
