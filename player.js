@@ -28,7 +28,7 @@ Player.prototype.update = function(deltaTime)
 
 	if((keyboard.isKeyDown(keyboard.KEY_LEFT)) != (keyboard.isKeyDown(keyboard.KEY_RIGHT)))
 	{
-		if(keyboard.isKeyDown(keyboard.KEY_RIGHT))
+		if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true)
 		{
 			this.moveVector.x += 1;
 		}
@@ -39,18 +39,18 @@ Player.prototype.update = function(deltaTime)
 	}
 	if((keyboard.isKeyDown(keyboard.KEY_UP)) != (keyboard.isKeyDown(keyboard.KEY_DOWN)))
 	{
-		if(keyboard.isKeyDown(keyboard.KEY_DOWN))
-		{
-			this.moveVector.y += -1;
-		}
-		else
+		if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true)
 		{
 			this.moveVector.y += 1;
 		}
+		else
+		{
+			this.moveVector.y += -1;
+		}
 	}
 
-	this.position += this.moveVector;
-
+	this.position.x += this.moveVector.x;
+	this.position.y += this.moveVector.y;
 }
 		
 Player.prototype.draw = function()
