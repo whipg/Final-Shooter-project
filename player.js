@@ -17,10 +17,10 @@ this.width = 48
 this.height = 48
 
 this.velocity = new Vector2();
-
 this.width = 93
 this.height = 80
-this.direction = LEFT;
+
+this.moveVector = new Vector2();
 };
 
 var player = new Player();
@@ -31,11 +31,35 @@ Player.prototype.update = function(deltaTime)
 {
 	this.sprite.update(deltaTime);
 
-	var left = false;
+	if((keyboard.isKeyDown(keyboard.KEY_LEFT)) != (keyboard.isKeyDown(keyboard.KEY_RIGHT)))
+	{
+		if(keyboard.isKeyDown(keyboard.KEY_RIGHT))
+		{
+			this.moveVector += 1;
+		}
+		else
+		{
+			this.moveVector += -1;
+		}
+	}
+	if((keyboard.isKeyDown(keyboard.KEY_UP)) != (keyboard.isKeyDown(keyboard.KEY_UP)))
+	{
+		if(keyboard.isKeyDown(keyboard.KEY_DOWN))
+		{
+			this.moveVector += -1;
+		}
+		else
+		{
+			this.moveVector += 1;
+		}
+	}
+
+	this.position += this.moveVector;
+
+	/*var left = false;
 	var right = false;
 	var up = false;
 	var down = false;
-
     if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true) {
 		this.direction = LEFT;
 		left = true;
@@ -43,7 +67,6 @@ Player.prototype.update = function(deltaTime)
 	else if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true) {
 		right = true;
 		this.direction = RIGHT;
-		right = true;
 	}
 	else if(keyboard.isKeyDown(keyboard.KEY_UP) == true) {
 		up = true;
@@ -53,35 +76,31 @@ Player.prototype.update = function(deltaTime)
 		down = true;
 		this.direction = DOWN;
 	}
-
+ 
 	var wasleft = this.velocity.x < 0;
 	var wasright = this.velocity.x > 0;
 	var wasup = this.velocity.y > 0;
 	var wasdown = this.velocity.y < 0;
 	var ddx = 0;
 	var ddy = 0;
-
 	if (left)
 		ddx = ddx - ACCEL;
 	else if (wasleft)
-		ddx = ddx + FRICTION;
-
+		ddx = 0;
 	if(right)
 		ddx = ddx + ACCEL;
 	else if (wasright)
-		ddx = ddx - FRICTION;
-
+		ddx = 0;
 	this.position.y = Math.floor(this.position.y +(deltaTime * this.velocity.y));
 	this.position.x = Math.floor(this.position.x +(deltaTime * this.velocity.x));
 	this.velocity.x = bound(this.velocity.x + (deltaTime * ddx), -MAXDX, MAXDX);
 	this.velocity.y = bound(this.velocity.y + (deltaTime * ddy), -MAXDY, MAXDY);
-
 	if((wasleft && (this.velocity.x > 0)) ||
 	   (wasright && (this.velocity.x < 0)))
 	{
 		this.velocity.x = 0;
 	}
-
+*/
 
 }
 	
@@ -92,29 +111,24 @@ Player.prototype.update = function(deltaTime)
 		 var left = false;
 		 var right = false;
 		 var jump = false;
-
 		// check keypress events
 		 if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true) 
 		 {
 		 	left = true;
 		 }
-
 		 if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true) 
 		 {
 		 	right = true;
 		 }
-
 		 if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true) 
 		 {
 		 	jump = true;
 		 }
-
 		 var wasleft = this.velocity.x < 0;
 		 var wasright = this.velocity.x > 0;
 		 var falling = this.falling;
 		 var ddx = 0; // acceleration
 		 var ddy = 0;
-
 		 if (left)
 		 	ddx = ddx - ACCEL; // player wants to go left
 		 else if (wasleft)
@@ -128,13 +142,11 @@ Player.prototype.update = function(deltaTime)
 			 ddy = ddy - JUMP; // apply an instantaneous (large) vertical impulse
 			 this.jumping = true;
 		 }
-
 		 // calculate the new position and velocity:
 		 this.position.y = Math.floor(this.position.y + (deltaTime * this.velocity.y));
 		 this.position.x = Math.floor(this.position.x + (deltaTime * this.velocity.x));
 		 this.velocity.x = bound(this.velocity.x + (deltaTime * ddx), -MAXDX, MAXDX);
 		 this.velocity.y = bound(this.velocity.y + (deltaTime * ddy), -MAXDY, MAXDY);
-
 		 if ((wasleft && (this.velocity.x > 0)) ||
 			 (wasright && (this.velocity.x < 0)))
 		 {
@@ -181,7 +193,6 @@ Player.prototype.update = function(deltaTime)
 			 // clamp the y position to avoid jumping into platform above
 			 this.position.y = tileToPixel(ty + 1);
 			 this.velocity.y = 0; // stop upward velocity
-
 			 // player is no longer really in that cell, we clamped them to the cell below
 			 cell = celldown;
 			 cellright = celldiag; // (ditto)
@@ -205,8 +216,8 @@ Player.prototype.update = function(deltaTime)
 				this.position.x = tileToPixel(tx + 1);
 				this.velocity.x = 0; // stop horizontal velocity
 			}
-		}*/
-		
+		}
+	}*/		
 		
 Player.prototype.draw = function()
 {

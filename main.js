@@ -159,7 +159,7 @@ function initialize() {
         }
     }
 
-    //TRIGGERED
+    /*TRIGGERED
     cells[LAYER_OBJECT_TRIGGERS] = [];
     idx = 0;
     for(var y = 0; y < map.layers[LAYER_OBJECT_TRIGGERS].height; y++) {
@@ -178,8 +178,9 @@ function initialize() {
             idx++;
         }
     }
-    }
+    }*/
 
+}
 }
 
 function run()
