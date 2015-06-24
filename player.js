@@ -13,8 +13,8 @@ this.sprite.setLoop(0, false);
 this.position = new Vector2();
 this.position.set(200, 200);
 
-this.width = 48
-this.height = 48
+this.width = 48;
+this.height = 48;
 
 this.velocity = new Vector2();
 
