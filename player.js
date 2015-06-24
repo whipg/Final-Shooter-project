@@ -23,40 +23,34 @@ this.height = 80
 this.moveVector = new Vector2();
 };
 
-var player = new Player();
-
-var PLAYER_SPEED = 300;
-
 Player.prototype.update = function(deltaTime)
 {
 	this.sprite.update(deltaTime);
 
-	/*if((keyboard.isKeyDown(keyboard.KEY_LEFT)) != (keyboard.isKeyDown(keyboard.KEY_RIGHT)))
+	if((keyboard.isKeyDown(keyboard.KEY_LEFT)) != (keyboard.isKeyDown(keyboard.KEY_RIGHT)))
 	{
 		if(keyboard.isKeyDown(keyboard.KEY_RIGHT))
 		{
-			this.moveVector += 1;
+			Player.moveVector += 1;
 		}
 		else
 		{
-			this.moveVector += -1;
+			Player.moveVector += -1;
 		}
 	}
 	if((keyboard.isKeyDown(keyboard.KEY_UP)) != (keyboard.isKeyDown(keyboard.KEY_UP)))
 	{
 		if(keyboard.isKeyDown(keyboard.KEY_DOWN))
 		{
-			this.moveVector += -1;
+			Player.moveVector += -1;
 		}
 		else
 		{
-			this.moveVector += 1;
+			Player.moveVector += 1;
 		}
 	}
 
-	this.position += this.moveVector;*/
-
-	
+	Player.position += Player.moveVector;
 
 }
 		
