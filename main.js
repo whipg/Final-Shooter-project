@@ -33,10 +33,10 @@ var enemy = new Enemy();
 var position = new Vector2();
 var hit= false;
 
-var LAYER_COUNT = 2;
+var LAYER_COUNT = 3;
 var LAYER_BACKGROUND = 0;
 var LAYER_OBJECT_ENEMIES = 1;
-//var LAYER_OBJECT_TRIGGERS = 2;
+var LAYER_OBJECT_TRIGGERS = 2;
 
 var MAP = {tw:100, th:100};
 var TILE = 32;
@@ -201,6 +201,7 @@ function run()
 	{
 		hit = true;
 	}
+
     if(keyboard.isKeyDown(keyboard.KEY_SHOOT) == true)
     {
     context.fillStyle = "#F02936";
