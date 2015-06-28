@@ -16,8 +16,6 @@ this.position.set(200, 200);
 this.width = 48;
 this.height = 48;
 
-this.velocity = new Vector2();
-
 this.moveVector = new Vector2();
 };
 
@@ -30,15 +28,11 @@ Player.prototype.update = function(deltaTime)
 	{
 		if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true)
 		{
-			this.moveVector.x += 1;
-		}
-		else if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == false)
-		{
-			this.moveVector.x = 0;
+			this.moveVector.x += 1 * deltaTime;
 		}
 		else if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true)
 		{
-			this.moveVector.x += -1;
+			this.moveVector.x += -1 * deltaTime;
 		}
 	}
 	if((keyboard.isKeyDown(keyboard.KEY_UP)) != (keyboard.isKeyDown(keyboard.KEY_DOWN)))
@@ -55,6 +49,15 @@ Player.prototype.update = function(deltaTime)
 
 	this.position.x += this.moveVector.x;
 	this.position.y += this.moveVector.y;
+
+	var wasleft = this.moveVector.x < 0;
+	var wasright = this.moveVector.x > 0;
+
+	if((wasleft && (this.moveVector.x > 0)) ||
+	   (wasright && (this.moveVector.x < 0)))
+	{
+		this.moveVector.x = 0;
+	}
 }
 		
 Player.prototype.draw = function()
