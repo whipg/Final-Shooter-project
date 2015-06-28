@@ -32,7 +32,11 @@ Player.prototype.update = function(deltaTime)
 		{
 			this.moveVector.x += 1;
 		}
-		else
+		else if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == false)
+		{
+			this.moveVector.x = 0;
+		}
+		else if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true)
 		{
 			this.moveVector.x += -1;
 		}
