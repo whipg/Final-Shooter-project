@@ -49,15 +49,6 @@ Player.prototype.update = function(deltaTime)
 
 	this.position.x += this.moveVector.x;
 	this.position.y += this.moveVector.y;
-
-	var wasleft = this.moveVector.x < 0;
-	var wasright = this.moveVector.x > 0;
-
-	if((wasleft && (this.moveVector.x > 0)) ||
-	   (wasright && (this.moveVector.x < 0)))
-	{
-		this.moveVector.x = 0;
-	}
 }
 		
 Player.prototype.draw = function()
