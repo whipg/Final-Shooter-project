@@ -13,17 +13,14 @@ this.sprite.setLoop(0, false);
 this.position = new Vector2();
 this.position.set(200, 200);
 
-this.width = 48
-this.height = 48
+this.width = 48;
+this.height = 48;
 
 this.velocity = new Vector2();
 
 this.moveVector = new Vector2();
 };
 
-var player = new Player();
-
-var PLAYER_SPEED = 300;
 
 Player.prototype.update = function(deltaTime)
 {
@@ -31,29 +28,29 @@ Player.prototype.update = function(deltaTime)
 
 	if((keyboard.isKeyDown(keyboard.KEY_LEFT)) != (keyboard.isKeyDown(keyboard.KEY_RIGHT)))
 	{
-		if(keyboard.isKeyDown(keyboard.KEY_RIGHT))
+		if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true)
 		{
-			this.moveVector += 1;
+			this.moveVector.x += 1;
 		}
 		else
 		{
-			this.moveVector += -1;
+			this.moveVector.x += -1;
 		}
 	}
-	if((keyboard.isKeyDown(keyboard.KEY_UP)) != (keyboard.isKeyDown(keyboard.KEY_UP)))
+	if((keyboard.isKeyDown(keyboard.KEY_UP)) != (keyboard.isKeyDown(keyboard.KEY_DOWN)))
 	{
-		if(keyboard.isKeyDown(keyboard.KEY_DOWN))
+		if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true)
 		{
-			this.moveVector += -1;
+			this.moveVector.y += 1;
 		}
 		else
 		{
-			this.moveVector += 1;
+			this.moveVector.y += -1;
 		}
 	}
 
-	this.position += this.moveVector;
-
+	this.position.x += this.moveVector.x;
+	this.position.y += this.moveVector.y;
 }
 		
 Player.prototype.draw = function()
