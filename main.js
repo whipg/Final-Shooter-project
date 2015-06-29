@@ -202,9 +202,15 @@ function run()
 	player.update(deltaTime);
 
   context.fillStyle = "yellow";
-context.font = "32px Arial";
-var scoreText = keyboard.isKeyDown(68);
-context.fillText(scoreText,SCREEN_WIDTH - 170, 35);
+context.font = "16px Arial";
+var scoreText = "Right: " + (keyboard.isKeyDown(68));
+context.fillText(scoreText,SCREEN_WIDTH - 170, 16);
+var scoreText = "Left: " + (keyboard.isKeyDown(65));
+context.fillText(scoreText,SCREEN_WIDTH - 170, 34);
+var scoreText = "Down: " + (keyboard.isKeyDown(83));
+context.fillText(scoreText,SCREEN_WIDTH - 170, 52);
+var scoreText = "Up: " + (keyboard.isKeyDown(87));
+context.fillText(scoreText,SCREEN_WIDTH - 170, 70);
 
 	/*for(var i=0; i<bullets.length; i++)
 	{

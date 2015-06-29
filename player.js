@@ -68,7 +68,6 @@ Player.prototype.update = function(deltaTime) {
   else if (wasup)
     this.moveVector.y = 0;
 
-
   this.position.x += this.moveVector.x;
   this.position.y += this.moveVector.y;
 
