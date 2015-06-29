@@ -39,11 +39,11 @@ Player.prototype.update = function(deltaTime)
 	{
 		if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true)
 		{
-			this.moveVector.y += 1;
+			this.moveVector.y += 1 * deltaTime;
 		}
 		else
 		{
-			this.moveVector.y += -1;
+			this.moveVector.y += -1 * deltaTime;
 		}
 	}
 
@@ -59,7 +59,7 @@ Player.prototype.update = function(deltaTime)
 		this.moveVector.x = 0;
 	}
 }
-		
+
 Player.prototype.draw = function()
 {
 	this.sprite.draw(context, this.position.x, this.position.y);
