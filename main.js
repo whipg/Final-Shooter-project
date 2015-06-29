@@ -3,12 +3,12 @@ var context = canvas.getContext("2d");
 
 var startFrameMillis = Date.now();
 var endFrameMillis = Date.now();
- 
+
 function getDeltaTime()
 {
         endFrameMillis = startFrameMillis;
         startFrameMillis = Date.now();
- 
+
                 // Find the delta time (dt) - the change in time since the last drawFrame
                 // We need to modify the delta time to something we can use.
                 // We want 1 to represent 1 second, so if the delta is in milliseconds
@@ -16,11 +16,11 @@ function getDeltaTime()
                 // animations appear at the right speed, though we may need to use
                 // some large values to get objects movement and rotation correct
         var deltaTime = (startFrameMillis - endFrameMillis) * 0.001;
-       
+
                 // validate that the delta is within range
         if(deltaTime > 1)
                 deltaTime = 1;
-               
+
         return deltaTime;
 }
 
@@ -145,7 +145,7 @@ var cells = []; // the array that holds our simplified collision data
 function initialize() {
     for(var layerIdx = 0; layerIdx < LAYER_COUNT; layerIdx++) { // initialize the collision map
         cells[layerIdx] = [];
-        var idx = 0;        
+        var idx = 0;
     idx = 0;
     for(var y = 0; y < map.layers[LAYER_OBJECT_ENEMIES].height; y++) {
         for(var x = 0; x < map.layers[LAYER_OBJECT_ENEMIES].width; x++) {
@@ -191,13 +191,25 @@ function run()
 
     var deltaTime = getDeltaTime();
 
+  /*  for(var i=0; i<enemies.length; i++)
+    {
+        enemies[i].update(deltaTime);
+    }*/
+
+
+
     drawMap();
 	player.update(deltaTime);
-	
+
+  context.fillStyle = "yellow";
+context.font = "32px Arial";
+var scoreText = keyboard.isKeyDown(68);
+context.fillText(scoreText,SCREEN_WIDTH - 170, 35);
+
 	/*for(var i=0; i<bullets.length; i++)
 	{
 		bullets[i].update(deltaTime);
-		if( bullets[i].position.x - worldOffsetX < 0 || bullets[i].position.x - worldOffsetX > SCREEN_WIDTH)		
+		if( bullets[i].position.x - worldOffsetX < 0 || bullets[i].position.x - worldOffsetX > SCREEN_WIDTH)
 	{
 		hit = true;
 	}
@@ -215,7 +227,7 @@ function run()
  //onKeyUp(event);
 }
 initialize();
- 
+
 //-------------------- Don't modify anything below here
 // This code will set up the framework so that the 'run' function is
 // called 60 times per second. We have some options to fall back on
@@ -238,7 +250,7 @@ window.mozRequestAnimationFrame(_cb); }
  setInterval(cb, 1000 / 60);
  }
  }
- 
+
  window.onEachFrame = onEachFrame;
 })();
 window.onEachFrame(run);

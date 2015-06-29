@@ -9,6 +9,8 @@ var Bullet = function(x, y)
 	var BULLET_SPEED = 450;
 
 	this.image.src ="bullet.png";
+
+	this.moveVector = new Vector2();
 };
 
 

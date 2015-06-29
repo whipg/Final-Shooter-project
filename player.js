@@ -24,40 +24,61 @@ Player.prototype.update = function(deltaTime)
 {
 	this.sprite.update(deltaTime);
 
+	this.moveVector.x = 0;
+	this.moveVector.y = 0;
+
+	var left = false;
+	var right = false;
+	var up = false;
+	var down = false;
+
 	if((keyboard.isKeyDown(keyboard.KEY_LEFT)) != (keyboard.isKeyDown(keyboard.KEY_RIGHT)))
 	{
-		if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true)
+		if(keyboard.isKeyDown(keyboard.KEY_RIGHT))
 		{
-			this.moveVector.x += 1 * deltaTime;
+			right = true;
 		}
-		else if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true)
+		else if(keyboard.isKeyDown(keyboard.KEY_LEFT))
 		{
-			this.moveVector.x += -1 * deltaTime;
+			left = true;
 		}
 	}
 	if((keyboard.isKeyDown(keyboard.KEY_UP)) != (keyboard.isKeyDown(keyboard.KEY_DOWN)))
 	{
-		if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true)
+		if(keyboard.isKeyDown(keyboard.KEY_DOWN))
 		{
-			this.moveVector.y += 1 * deltaTime;
+			down = true;
 		}
-		else
+		else if(keyboard.isKeyDown(keyboard.KEY_UP))
 		{
-			this.moveVector.y += -1 * deltaTime;
+			up = true;
 		}
 	}
-
-	this.position.x += this.moveVector.x;
-	this.position.y += this.moveVector.y;
 
 	var wasleft = this.moveVector.x < 0;
 	var wasright = this.moveVector.x > 0;
 
-	if((wasleft && (this.moveVector.x > 0)) ||
-	   (wasright && (this.moveVector.x < 0)))
-	{
-		this.moveVector.x = 0;
-	}
+	if(right)
+	this.moveVector.x += 50 * deltaTime;
+	else if (wasright)
+	this.moveVector.x = 0;
+	if(left)
+	this.moveVector.x += -50 * deltaTime;
+	else if (wasleft)
+	this.moveVector.x = 0;
+	if(down)
+	this.moveVector.y += 50 * deltaTime;
+	if(up)
+	this.moveVector.y += -50 * deltaTime;
+
+
+
+	this.position.x += this.moveVector.x;
+	this.position.y += this.moveVector.y;
+
+
+
+
 }
 
 Player.prototype.draw = function()
