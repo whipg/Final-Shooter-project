@@ -57,20 +57,25 @@ Player.prototype.update = function(deltaTime)
 
 	var wasleft = this.moveVector.x < 0;
 	var wasright = this.moveVector.x > 0;
+	var wasdown = this.moveVector.y > 0;
+	var wasup = this.moveVector.y < 0;
 
 	if(right)
-	this.moveVector.x += 50 * deltaTime;
+	this.moveVector.x = 50 * deltaTime;
 	else if (wasright)
 	this.moveVector.x = 0;
 	if(left)
-	this.moveVector.x += -50 * deltaTime;
+	this.moveVector.x = -50 * deltaTime;
 	else if (wasleft)
 	this.moveVector.x = 0;
 	if(down)
-	this.moveVector.y += 50 * deltaTime;
+	this.moveVector.y = 50 * deltaTime;
+	else if (wasdown)
+	this.moveVector.y = 0;
 	if(up)
-	this.moveVector.y += -50 * deltaTime;
-
+	this.moveVector.y = -50 * deltaTime;
+	else if (wasup)
+	this.moveVector.y = 0;
 
 
 	this.position.x += this.moveVector.x;
