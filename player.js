@@ -16,8 +16,6 @@ this.position.set(200, 200);
 this.width = 48;
 this.height = 48;
 
-this.velocity = new Vector2();
-
 this.moveVector = new Vector2();
 };
 
@@ -26,33 +24,76 @@ Player.prototype.update = function(deltaTime)
 {
 	this.sprite.update(deltaTime);
 
-	if((keyboard.isKeyDown(keyboard.KEY_LEFT)) != (keyboard.isKeyDown(keyboard.KEY_RIGHT)))
+	this.moveVector.x = 0;
+	this.moveVector.y = 0;
+
+	var left = false;
+	var right = false;
+	var up = false;
+	var down = false;
+    var shoot = false;
+	
+	 if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true) 
 	{
-		if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true)
 		{
-			this.moveVector.x += 1;
+			left = true;
+			//right = false;
 		}
-		else
-		{
-			this.moveVector.x += -1;
-		}
+		
 	}
-	if((keyboard.isKeyDown(keyboard.KEY_UP)) != (keyboard.isKeyDown(keyboard.KEY_DOWN)))
+	else if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true)
 	{
-		if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true)
+	{
+		//left = false;
+		right = true;
+	}
+	}
+	/*if((keyboard.isKeyDown(keyboard.KEY_UP)) != (keyboard.isKeyDown(keyboard.KEY_DOWN)))
+	{
+		if(keyboard.isKeyDown(keyboard.KEY_DOWN))
 		{
-			this.moveVector.y += 1;
+			down = true;
 		}
-		else
+		else if(keyboard.isKeyDown(keyboard.KEY_UP))
 		{
-			this.moveVector.y += -1;
+			up = true;
 		}
 	}
 
+	if(keyboard.isKeyDown(keyboard.KEY_RIGHT))
+		{
+			right = true;
+		}*/
+	
+	
+	
+	var wasleft = this.moveVector.x < 0;
+	var wasright = this.moveVector.x > 0;
+    var wasdown = this.moveVector.y > 0;
+	var wasup = this.moveVector.y < 0;
+	if(right)
+	this.moveVector.x += 50 * deltaTime;
+	else if (wasright)
+	this.moveVector.x = 0;
+	if(left)
+	this.moveVector.x += -50 * deltaTime;
+	else if (wasleft)
+	this.moveVector.x = 0;
+	if(down)
+	this.moveVector.y += 50 * deltaTime;
+	if(up)
+	this.moveVector.y += -50 * deltaTime;
+   
+
+
 	this.position.x += this.moveVector.x;
 	this.position.y += this.moveVector.y;
+
+
+
+
 }
-		
+
 Player.prototype.draw = function()
 {
 	this.sprite.draw(context, this.position.x, this.position.y);
