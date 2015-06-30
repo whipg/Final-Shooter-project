@@ -4,8 +4,18 @@ var RIGHT = 1;
 var UP = 2;
 var DOWN = 3;
 
+var ANIM_WALK_LEFT = 0;
+var ANIM_WALK_RIGHT = 1;
+var ANIM_WALK_UP = 2;
+var ANIM_WALK_DOWN = 3;
+
+
 var Player = function() {
   this.sprite = new Sprite("playerplaceholder.png");
+  this.sprite.buildAnimation(1, 1, 32, 32, -1, [0]);
+  this.sprite.buildAnimation(1, 1, 32, 32, -1, [0]);
+  this.sprite.buildAnimation(1, 1, 32, 32, -1, [0]);
+  this.sprite.buildAnimation(1, 1, 32, 32, -1, [0]);
   this.sprite.buildAnimation(1, 1, 32, 32, -1, [0]);
   this.sprite.setAnimationOffset(0, 0, 0);
   this.sprite.setLoop(0, false);
@@ -34,15 +44,23 @@ Player.prototype.update = function(deltaTime) {
   if ((keyboard.isKeyDown(keyboard.KEY_LEFT)) != (keyboard.isKeyDown(keyboard.KEY_RIGHT))) {
     if (keyboard.isKeyDown(keyboard.KEY_RIGHT)) {
       right = true;
+      if(this.sprite.currentAnimation != ANIM_WALK_RIGHT)
+        this.sprite.setAnimation(ANIM_WALK_RIGHT);
     } else if (keyboard.isKeyDown(keyboard.KEY_LEFT)) {
       left = true;
+      if(this.sprite.currentAnimation != ANIM_WALK_LEFT)
+        this.sprite.setAnimation(ANIM_WALK_LEFT);
     }
   }
   if ((keyboard.isKeyDown(keyboard.KEY_UP)) != (keyboard.isKeyDown(keyboard.KEY_DOWN))) {
     if (keyboard.isKeyDown(keyboard.KEY_DOWN)) {
       down = true;
+      if(this.sprite.currentAnimation != ANIM_WALK_DOWN)
+        this.sprite.setAnimation(ANIM_WALK_DOWN);
     } else if (keyboard.isKeyDown(keyboard.KEY_UP)) {
       up = true;
+      if(this.sprite.currentAnimation != ANIM_WALK_UP)
+        this.sprite.setAnimation(ANIM_WALK_UP);
     }
   }
 
