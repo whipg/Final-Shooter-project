@@ -47,8 +47,8 @@ Player.prototype.update = function(deltaTime) {
   if (keyboard.isKeyDown(keyboard.KEY_UP))
     this.moveVector.y = -100 * deltaTime;
 
-  if (keyboard.isDown(keyboard.KEY_SHOOT))
-	  
+  //if (keyboard.isKeyDown(keyboard.KEY_SHOOT))
+
 
   this.position.x += this.moveVector.x;
   this.position.y += this.moveVector.y;
