@@ -79,6 +79,7 @@ Player.prototype.update = function(deltaTime) {
     cooldownTimer = 0.3;
   }
 
+  
 }
 
 Player.prototype.draw = function() {
