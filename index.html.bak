@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <title>BEST GAME EVER</title>
+    <style type="text/css">
+#Title {  
+  font-size: 200%;
+}
+
+</style></head>
+  <body>
+    <p id="Title"> BEST GAME EVER </p>
+    <p><br>
+    </p>
+    <canvas id="gameCanvas" width="800" height="800"> </canvas>
+    <script src="Vector2.js"></script>
+    <script src="basestate.js"></script>
+    <script src="statemanager.js"></script>
+    <script src="howler.js"></script>
+    <script src="map.js"></script>
+    <script src="sprite.js"></script>
+    <script src="enemy.js"></script>
+    <script src="bullet.js"></script>
+    <script src="keyboard.js"></script>
+    <script src="player.js"></script>
+    <script src="main.js"></script> <br>
+    <br>
+    <a href="howto.html">How To Play</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+      href="about.html"> About the Developer&nbsp; </a><br>
+  </body>
+</html>
