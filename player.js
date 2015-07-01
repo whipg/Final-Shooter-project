@@ -36,60 +36,18 @@ Player.prototype.update = function(deltaTime) {
   this.moveVector.x = 0;
   this.moveVector.y = 0;
 
-  var left = false;
-  var right = false;
-  var up = false;
-  var down = false;
+  if (keyboard.isKeyDown(keyboard.KEY_RIGHT))
+    this.moveVector.x = 100 * deltaTime;
+  if (keyboard.isKeyDown(keyboard.KEY_LEFT))
+    this.moveVector.x = -100 * deltaTime;
 
-  if ((keyboard.isKeyDown(keyboard.KEY_LEFT)) != (keyboard.isKeyDown(keyboard.KEY_RIGHT))) {
-    if (keyboard.isKeyDown(keyboard.KEY_RIGHT)) {
-      right = true;
-      if(this.sprite.currentAnimation != ANIM_WALK_RIGHT)
-        this.sprite.setAnimation(ANIM_WALK_RIGHT);
-    } else if (keyboard.isKeyDown(keyboard.KEY_LEFT)) {
-      left = true;
-      if(this.sprite.currentAnimation != ANIM_WALK_LEFT)
-        this.sprite.setAnimation(ANIM_WALK_LEFT);
-    }
-  }
-  if ((keyboard.isKeyDown(keyboard.KEY_UP)) != (keyboard.isKeyDown(keyboard.KEY_DOWN))) {
-    if (keyboard.isKeyDown(keyboard.KEY_DOWN)) {
-      down = true;
-      if(this.sprite.currentAnimation != ANIM_WALK_DOWN)
-        this.sprite.setAnimation(ANIM_WALK_DOWN);
-    } else if (keyboard.isKeyDown(keyboard.KEY_UP)) {
-      up = true;
-      if(this.sprite.currentAnimation != ANIM_WALK_UP)
-        this.sprite.setAnimation(ANIM_WALK_UP);
-    }
-  }
-
-  var wasleft = this.moveVector.x < 0;
-  var wasright = this.moveVector.x > 0;
-  var wasdown = this.moveVector.y > 0;
-  var wasup = this.moveVector.y < 0;
-
-  if (right)
-    this.moveVector.x = 50 * deltaTime;
-  else if (wasright)
-    this.moveVector.x = 0;
-  if (left)
-    this.moveVector.x = -50 * deltaTime;
-  else if (wasleft)
-    this.moveVector.x = 0;
-  if (down)
-    this.moveVector.y = 50 * deltaTime;
-  else if (wasdown)
-    this.moveVector.y = 0;
-  if (up)
-    this.moveVector.y = -50 * deltaTime;
-  else if (wasup)
-    this.moveVector.y = 0;
+  if (keyboard.isKeyDown(keyboard.KEY_DOWN))
+    this.moveVector.y = 100 * deltaTime;
+  if (keyboard.isKeyDown(keyboard.KEY_UP))
+    this.moveVector.y = -100 * deltaTime;
 
   this.position.x += this.moveVector.x;
   this.position.y += this.moveVector.y;
-
-
 
 }
 
