@@ -1,26 +1,37 @@
-var Bullet = function(x, y)
-{
-	this.image = document.createElement("img");
-	this.position = new Vector2();
-	this.position.Set(x, y);
-
-	this.velocity = new Vector2();
-
-	var BULLET_SPEED = 450;
-
-	this.image.src ="bullet.png";
-
-	this.moveVector = new Vector2();
+var bullet = {
+	image: document.createElement("img"),
+	x: player.x,
+	y: player.y,
+	width: 5,
+	height: 5,
+	velocityX: 0,
+	velocityY: 0,
+isDead: true
 };
 
+bullet.image.src = "bullet.png";
 
-Bullet.prototype.update = function(dt)
+function playerShoot()
 {
-this.image.update(dt);
-this.position.x = Math.floor(this.position.x + (dt * this.velocity.x));
-}
-Bullet.prototype.draw = function()
-{
-var screenX = this.position.x - worldOffsetX;
-this.image.draw(context, screenX, this.position.y);
+	
+	if( bullet.isDead == false )
+	return;
+	
+	var velX = 0;
+	var velY = 1;
+	
+	var s = Math.sin(player.rotation);
+	var c = Math.cos(player.rotation);
+	
+	var xVel = (velX * c) - (velY * s);
+	var yVel = (velX * s) + (velY * c);
+	
+	
+	bullet.velocityX = xVel * BULLET_SPEED;
+	bullet.velocityY = yVel * BULLET_SPEED;
+	
+	bullet.x = player.x;
+	bullet.y = player.y;
+	
+	bullet.isDead = false;
 }

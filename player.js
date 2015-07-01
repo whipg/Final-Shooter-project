@@ -30,6 +30,7 @@ var Player = function() {
 };
 
 
+
 Player.prototype.update = function(deltaTime) {
   this.sprite.update(deltaTime);
 
@@ -45,6 +46,9 @@ Player.prototype.update = function(deltaTime) {
     this.moveVector.y = 100 * deltaTime;
   if (keyboard.isKeyDown(keyboard.KEY_UP))
     this.moveVector.y = -100 * deltaTime;
+
+  if (keyboard.isDown(keyboard.KEY_SHOOT))
+	  
 
   this.position.x += this.moveVector.x;
   this.position.y += this.moveVector.y;
