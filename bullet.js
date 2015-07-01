@@ -1,7 +1,7 @@
 var bullet = {
 	image: document.createElement("img"),
-	x: player.x,
-	y: player.y,
+	x: Player.x,
+	y: Player.y,
 	width: 5,
 	height: 5,
 	velocityX: 0,
