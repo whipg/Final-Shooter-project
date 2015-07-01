@@ -31,7 +31,6 @@ var player = new Player();
 var keyboard = new Keyboard();
 var enemy = new Enemy();
 var position = new Vector2();
-var hit= false;
 
 var LAYER_COUNT = 3;
 var LAYER_BACKGROUND = 0;
@@ -96,49 +95,28 @@ function bound(value, min, max)
 	return value;
 }
 
-var worldOffsetX = 0;
 function drawMap()
 {
-    var startX = -1;
-    var maxTiles = Math.floor(SCREEN_WIDTH / TILE) + 2;
-    var tileX = pixelToTile(player.position.x);
-    var offsetX = TILE + Math.floor(player.position.x%TILE);
-
-    startX = tileX - Math.floor(maxTiles / 2);
-
-    if(startX < -1)
+  for(var layerIdx=0; layerIdx<LAYER_COUNT; layerIdx++)
+  {
+    var idx = 0;
+    for( var y = 0; y < map.layers[layerIdx].height; y++ )
     {
-        startX = 0;
-        offsetX = 0;
-    }
-    if(startX > MAP.tw - maxTiles)
-    {
-        startX = MAP.tw - maxTiles + 1;
-        offsetX = TILE;
-    }
-
-    worldOffsetX = startX * TILE + offsetX;
-
-    for(var layerIdx=0; layerIdx<LAYER_COUNT; layerIdx++)
-    {
-        for( var y = 0; y < map.layers[layerIdx].height; y++ )
+      for( var x = 0; x < map.layers[layerIdx].width; x++ )
+      {
+        if( map.layers[layerIdx].data[idx] != 0 )
         {
-            var idx = y * map.layers[layerIdx].width + startX;
-            for( var x = startX; x < startX + maxTiles; x++ )
-            {
-                if( map.layers[layerIdx].data[idx] != 0 )
-                {
-                    // the tiles in the Tiled map are base 1 (meaning a value of 0 means no tile), so subtract one from the tileset id to get the
-                    // correct tile
-                    var tileIndex = map.layers[layerIdx].data[idx] - 1;
-                    var sx = TILESET_PADDING + (tileIndex % TILESET_COUNT_X) * (TILESET_TILE + TILESET_SPACING);
-                    var sy = TILESET_PADDING + (Math.floor(tileIndex / TILESET_COUNT_Y)) * (TILESET_TILE + TILESET_SPACING);
-                    context.drawImage(tileset, sx, sy, TILESET_TILE, TILESET_TILE, (x-startX)*TILE - offsetX, (y-1)*TILE, TILESET_TILE, TILESET_TILE);
-                }
-                idx++;
-            }
+          // the tiles in the Tiled map are base 1 (meaning a value of 0 means no tile), so subtract one from the tileset id to get the
+          // correct tile
+          var tileIndex = map.layers[layerIdx].data[idx] - 1;
+          var sx = TILESET_PADDING + (tileIndex % TILESET_COUNT_X) * (TILESET_TILE + TILESET_SPACING);
+          var sy = TILESET_PADDING + (Math.floor(tileIndex / TILESET_COUNT_Y)) * (TILESET_TILE + TILESET_SPACING);
+          context.drawImage(tileset, sx, sy, TILESET_TILE, TILESET_TILE, x*TILE, (y-1)*TILE, TILESET_TILE, TILESET_TILE);
         }
+        idx++;
+      }
     }
+  }
 }
 
 var cells = []; // the array that holds our simplified collision data
@@ -183,6 +161,18 @@ function initialize() {
 }
 }
 
+function intersects(x1, y1, w1, h1, x2, y2, w2, h2)
+{
+        if(y2 + h2 < y1 ||
+                x2 + w2 < x1 ||
+                x2 > x1 + w1 ||
+                y2 > y1 + h1)
+        {
+                return false;
+        }
+        return true;
+}
+
 function run()
 {
     context.fillStyle = "#ccc";
@@ -211,8 +201,6 @@ var scoreText = "Down: " + (keyboard.isKeyDown(83));
 context.fillText(scoreText,SCREEN_WIDTH - 170, 52);
 var scoreText = "Up: " + (keyboard.isKeyDown(87));
 context.fillText(scoreText,SCREEN_WIDTH - 170, 70);
-var scoreText = "Space: " + (keyboard.isKeyDown(32));
-context.fillText(scoreText,SCREEN_WIDTH - 170, 87);
 
 	/*for(var i=0; i<bullets.length; i++)
 	{
