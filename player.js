@@ -70,6 +70,15 @@ Player.prototype.update = function(deltaTime) {
   this.position.x += this.moveVector.x;
   this.position.y += this.moveVector.y;
 
+  if(cooldownTimer>0)
+  {
+    cooldownTimer -= deltaTime;
+  }
+
+  if(keyboard.isKeyDown(keyboard.KEY_SHOOT) && cooldownTimer <= 0) {
+    cooldownTimer = 0.3;
+  }
+
 }
 
 Player.prototype.draw = function() {

@@ -187,12 +187,6 @@ function run() {
   var scoreText = "Up: " + (keyboard.isKeyDown(87));
   context.fillText(scoreText, SCREEN_WIDTH - 170, 70);
 
-  /*  for(var i=0; i<enemies.length; i++)
-    {
-        enemies[i].update(deltaTime);
-    }*/
-
-
   var hit = false;
   for (var i = 0; i < bullets.length; i++) {
     bullets[i].update(deltaTime);
@@ -218,7 +212,7 @@ function run() {
     if (Player.isDead = false) {
       if (intersects(enemies[j].position.x, enemies[j].position.y, TILE, TILE, Player.position.x, Player.position.y, Player.width / 2, Player.height / 2) == true) {
         lives -= 1;
-        player.position.Set(2 * 35, 17 * 35);
+        player.position.set(2 * 35, 17 * 35);
         sfxDamage.play();
         break;
       }
@@ -231,8 +225,17 @@ function run() {
     context.fillText("Click!", SCREEN_WIDTH - 170, 35);
   }
 
-
   player.draw();
+
+  /*  for(var i=0; i<enemies.length; i++)
+    {
+        enemies[i].update(deltaTime);
+    }*/
+
+  for(var i=0; i<bullets.length; i++)
+  {
+    bullets[i].draw(deltaTime);
+  }
 }
 initialize();
 
