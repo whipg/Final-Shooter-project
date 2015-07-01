@@ -211,6 +211,8 @@ var scoreText = "Down: " + (keyboard.isKeyDown(83));
 context.fillText(scoreText,SCREEN_WIDTH - 170, 52);
 var scoreText = "Up: " + (keyboard.isKeyDown(87));
 context.fillText(scoreText,SCREEN_WIDTH - 170, 70);
+var scoreText = "Space: " + (keyboard.isKeyDown(32));
+context.fillText(scoreText,SCREEN_WIDTH - 170, 87);
 
 	/*for(var i=0; i<bullets.length; i++)
 	{
