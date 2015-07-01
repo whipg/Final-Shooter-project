@@ -24,7 +24,7 @@ var Player = function() {
   this.position = new Vector2();
   this.position.set(200, 200);
 
-  this.width = 48;
+  this.width = 32;
   this.height = 48;
 
   this.moveVector = new Vector2();
