@@ -173,7 +173,7 @@ function run() {
 
   var deltaTime = getDeltaTime();
 
-
+  drawMap();
   player.update(deltaTime);
 
   context.fillStyle = "yellow";
@@ -196,8 +196,8 @@ function run() {
   var hit = false;
   for (var i = 0; i < bullets.length; i++) {
     bullets[i].update(deltaTime);
-    if (bullets[i].position.x - worldOffsetX < 0 ||
-      bullets[i].position.x - worldOffsetX > SCREEN_WIDTH) {
+    if (bullets[i].position.x < 0 ||
+      bullets[i].position.x > SCREEN_WIDTH) {
       hit = true;
     }
 
@@ -231,7 +231,7 @@ function run() {
     context.fillText("Click!", SCREEN_WIDTH - 170, 35);
   }
 
-  drawMap();
+
   player.draw();
 }
 initialize();
