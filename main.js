@@ -30,7 +30,7 @@ var player = new Player();
 var keyboard = new Keyboard();
 var enemy = new Enemy();
 var position = new Vector2();
-
+var bullet = new Bullet();
 var LAYER_COUNT = 3;
 var LAYER_BACKGROUND = 0;
 var LAYER_OBJECT_ENEMIES = 1;
@@ -57,7 +57,7 @@ var JUMP = METER * 1500;
 var GRAVITY = METER * 9.8 * 6;
 
 var enemies = [];
-
+var bulletst = [];
 var tileset = document.createElement("img");
 tileset.src = "0.png";
 
