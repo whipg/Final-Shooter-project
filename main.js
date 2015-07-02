@@ -199,7 +199,6 @@ function run() {
       if (intersects(bullets[i].position.x, bullets[i].position.y, TILE, TILE) == true) {
         enemies.splice(j, 1);
         hit = true;
-        score += 1;
         break;
       }
     }
