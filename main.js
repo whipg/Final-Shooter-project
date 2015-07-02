@@ -57,7 +57,7 @@ var JUMP = METER * 1500;
 var GRAVITY = METER * 9.8 * 6;
 
 var enemies = [];
-var bulletst = [];
+var bullets = [];
 var tileset = document.createElement("img");
 tileset.src = "0.png";
 
