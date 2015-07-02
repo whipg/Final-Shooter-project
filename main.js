@@ -114,6 +114,8 @@ function drawMap() {
   }
 }
 
+var sfxWalk;
+
 var cells = []; // the array that holds our simplified collision data
 function initialize() {
   for (var layerIdx = 0; layerIdx < LAYER_COUNT; layerIdx++) { // initialize the collision map
@@ -154,6 +156,17 @@ function initialize() {
     }*/
 
   }
+
+  sfxWalk = new Howl(
+    {
+      urls: ["walk.mp3"],
+      buffer: true,
+      volume: 1,
+      onend: function() {
+        isSfxPlaying = true;
+      }
+    }
+  );
 }
 
 function intersects(x1, y1, w1, h1, x2, y2, w2, h2) {

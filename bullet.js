@@ -14,13 +14,16 @@ var Bullet = function(x, y, moveRight) {
   this.moveRight = moveRight;
   this.moveLeft = true;
   if (this.moveRight == true)
-    this.velocity.set(-MAXDX * 2, 0);
-  else
     this.velocity.set(MAXDX * 2, 0);
+  else
+    this.velocity.set(-MAXDX * 2, 0);
 };
 
-Bullet.prototype.update = function(deltaTime) {
+Bullet.prototype.update = function(deltaTime)
+{
+  this.sprite.update(deltaTime);
   this.position.x = Math.floor(this.position.x + (deltaTime * this.velocity.x));
+  this.position.y = Math.floor(this.position.y + (deltaTime * this.velocity.y));
 }
 
 Bullet.prototype.draw = function() {
