@@ -10,6 +10,7 @@ var ANIM_WALK_UP = 2;
 var ANIM_WALK_DOWN = 3;
 var ANIM_IDLE = 4;
 
+var cooldownTimer = 0;
 
 var Player = function() {
   this.sprite = new Sprite("player.png");
@@ -79,7 +80,7 @@ Player.prototype.update = function(deltaTime) {
     cooldownTimer = 0.3;
   }
 
-  
+
 }
 
 Player.prototype.draw = function() {
