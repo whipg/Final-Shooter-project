@@ -28,6 +28,8 @@ var Player = function() {
   this.height = 48;
 
   this.moveVector = new Vector2();
+
+  this.rotation = 0;
 };
 
 
@@ -47,28 +49,28 @@ Player.prototype.update = function(deltaTime) {
     this.moveVector.x = 100 * deltaTime;
     this.direction = RIGHT;
     right = true;
-    sfxWalk.play();
+    this.rotation = 90;
     if (this.sprite.currentAnimation != ANIM_WALK_RIGHT)
       this.sprite.setAnimation(ANIM_WALK_RIGHT);
   } else if (keyboard.isKeyDown(keyboard.KEY_LEFT)) {
     this.moveVector.x = -100 * deltaTime;
     this.direction = LEFT;
     left = true;
-    sfxWalk.play();
+    this.rotation = 270;
     if (this.sprite.currentAnimation != ANIM_WALK_LEFT)
       this.sprite.setAnimation(ANIM_WALK_LEFT);
   } else if (keyboard.isKeyDown(keyboard.KEY_DOWN)) {
     this.moveVector.y = 100 * deltaTime;
     this.direction = DOWN;
     down = true;
-    sfxWalk.play();
+    this.rotation = 180;
     if (this.sprite.currentAnimation != ANIM_WALK_DOWN)
       this.sprite.setAnimation(ANIM_WALK_DOWN);
   } else if (keyboard.isKeyDown(keyboard.KEY_UP)) {
     this.moveVector.y = -100 * deltaTime;
     this.direction = UP;
     up = true;
-    sfxWalk.play();
+    this.rotation = 0;
     if (this.sprite.currentAnimation != ANIM_WALK_UP)
       this.sprite.setAnimation(ANIM_WALK_UP);
   } else {
@@ -86,7 +88,9 @@ Player.prototype.update = function(deltaTime) {
   if(keyboard.isKeyDown(keyboard.KEY_SHOOT) && cooldownTimer <= 0) {
     cooldownTimer = 0.3;
 
-    var tempBullet = new Bullet(this.position.x, this.position.y);
+    playerShoot();
+
+  /*  var tempBullet = new Bullet(this.position.x, this.position.y);
     if(right == true)
     {
       tempBullet.velocity.x = 400;
@@ -109,7 +113,7 @@ Player.prototype.update = function(deltaTime) {
     }
 
     cooldownTimer = 0.5;
-    bullets.push(tempBullet);
+    bullets.push(tempBullet);*/
   }
 }
 

@@ -30,7 +30,7 @@ var player = new Player();
 var keyboard = new Keyboard();
 var enemy = new Enemy();
 var position = new Vector2();
-var bullet = new Bullet();
+
 var LAYER_COUNT = 3;
 var LAYER_BACKGROUND = 0;
 var LAYER_OBJECT_ENEMIES = 1;
@@ -114,7 +114,7 @@ function drawMap() {
   }
 }
 
-var sfxWalk;
+var musicBackground;
 
 var cells = []; // the array that holds our simplified collision data
 function initialize() {
@@ -134,40 +134,49 @@ function initialize() {
       }
     }
 
-    /*TRIGGERED
-    cells[LAYER_OBJECT_TRIGGERS] = [];
-    idx = 0;
-    for(var y = 0; y < map.layers[LAYER_OBJECT_TRIGGERS].height; y++) {
-        cells[LAYER_OBJECT_TRIGGERS][y] = [];
-        for(var x = 0; x < map.layers[LAYER_OBJECT_TRIGGERS].width; x++) {
-            if(map.layers[LAYER_OBJECT_TRIGGERS].data[idx] != 0) {
-                cells[LAYER_OBJECT_TRIGGERS][y][x] = 1;
-                cells[LAYER_OBJECT_TRIGGERS][y-1][x] = 1;
-                cells[LAYER_OBJECT_TRIGGERS][y-1][x+1] = 1;
-                cells[LAYER_OBJECT_TRIGGERS][y][x+1] = 1;
-            }
-            else if(cells[LAYER_OBJECT_TRIGGERS][y][x] != 1) {
-                // if we haven't set this cell's value, then set it to 0 now
-                cells[LAYER_OBJECT_TRIGGERS][y][x] = 0;
-            }
-            idx++;
-        }
-    }
-    }*/
-
-  }
-
-  sfxWalk = new Howl(
-    {
-      urls: ["walk.mp3"],
-      buffer: true,
-      volume: 1,
-      onend: function() {
-        isSfxPlaying = true;
-      }
-    }
-  );
 }
+
+  musicBackground = new Howl(
+  {
+    urls: ["bensound-acousticbreeze.mp3"],
+    loop: true,
+    buffer: true,
+    volume: 0.2
+  });
+  musicBackground.play();
+
+}
+
+function playerShoot()
+{
+        var bullet = {
+                image: document.createElement("img"),
+                x: player.x,
+                y: player.y,
+                width: 5,
+                height: 5,
+                velocityX: 0,
+                velocityY: 0,
+        };
+
+        bullet.image.src = "bullet.png";
+
+        var BULLET_SPEED = 6;
+
+        var velX = 0;
+        var velY = 1;
+
+        var s = Math.sin(player.rotation);
+        var c = Math.cos(player.rotation);
+
+        var xVel = (velX * c) - (velY * s);
+        var yVel = (velX * s) + (velY * c);
+
+        bullet.velocityX = xVel * BULLET_SPEED;
+        bullet.velocityY = yVel * BULLET_SPEED;
+
+        bullets.push(bullet);
+};
 
 function intersects(x1, y1, w1, h1, x2, y2, w2, h2) {
   if (y2 + h2 < y1 ||
@@ -200,7 +209,7 @@ function run() {
   var scoreText = "Up: " + (keyboard.isKeyDown(87));
   context.fillText(scoreText, SCREEN_WIDTH - 170, 70);
 
-  var hit = false;
+  /*var hit = false;
   for (var i = 0; i < bullets.length; i++) {
     bullets[i].update(deltaTime);
     if (bullets[i].position.x < 0 ||
@@ -235,7 +244,7 @@ function run() {
     context.fillStyle = "#F02936";
     context.font = "14px Arial"
     context.fillText("Click!", SCREEN_WIDTH - 170, 35);
-  }
+  }*/
 
   player.draw();
 
@@ -243,11 +252,13 @@ function run() {
     {
         enemies[i].update(deltaTime);
     }*/
+    for(var i=0; i<bullets.length; i++)
+                    {
+                            context.drawImage(bullets[i].image,
+                            bullets[i].x - bullets[i].width/2,
+                            bullets[i].y - bullets[i].height/2);
+                    }
 
-  for(var i=0; i<bullets.length; i++)
-  {
-    bullets[i].draw(deltaTime);
-  }
 }
 initialize();
 
