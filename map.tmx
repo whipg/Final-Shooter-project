@@ -3,9 +3,17 @@
  <tileset firstgid="1" name="Grass" tilewidth="32" tileheight="32">
   <image source="0.png" width="64" height="64"/>
  </tileset>
- <layer name="Tile Layer 1" width="25" height="25">
+ <tileset firstgid="5" name="enemy" tilewidth="32" tileheight="32">
+  <image source="playerplaceholder.png" width="50" height="50"/>
+ </tileset>
+ <layer name="Background" width="25" height="25">
   <data encoding="base64" compression="zlib">
-   eJztwwEJAAAMBKH7/qWXY6Dgqqmq+uoB+w0Ccg==
+   eJxjZGBgYBxEmHUQuGEU0y6uRuN3FA9GPJjS5WByy1DHIz0sR7r/R0JYAACVjAKS
+  </data>
+ </layer>
+ <layer name="Enemies" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAHgzCcQAAQ==
   </data>
  </layer>
 </map>

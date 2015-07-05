@@ -22,7 +22,7 @@ var Player = function() {
   this.sprite.setLoop(0, false);
 
   this.position = new Vector2();
-  this.position.set(200, 200);
+  this.position.set(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 
   this.width = 32;
   this.height = 48;
