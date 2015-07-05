@@ -151,8 +151,8 @@ function playerShoot()
 {
         var bullet = {
                 image: document.createElement("img"),
-                x: player.x,
-                y: player.y,
+                x: player.position.x,
+                y: player.position.y,
                 width: 5,
                 height: 5,
                 velocityX: 0,
