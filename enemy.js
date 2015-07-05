@@ -1,7 +1,7 @@
 var ANIM_WALK = 0;
 
 var Enemy = function() {
-  this.sprite = new Sprite("enemyplaceholder.png");
+  this.sprite = new Sprite("cat.png");
   this.sprite.buildAnimation(4, 2, 498, 292, 0.05, [0,1,2,3,4,5,6,7]);
   this.sprite.setAnimationOffset(0, 0, 0);
   this.sprite.setLoop(0, false);
