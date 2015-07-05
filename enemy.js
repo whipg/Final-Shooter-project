@@ -1,28 +1,26 @@
-var Enemy = function(x, y) {
-  this.sprite = new Sprite("playerplaceholder.png");
-  this.sprite.buildAnimation(1, 1, 32, 32, -1, [0]);
-  this.sprite.setAnimationOffset(0, 0, 0);
-  this.sprite.setLoop(0, false);
+var Enemy = function() {
+  this.sprite = new Sprite("enemyplaceholder.png");
 
   this.position = new Vector2();
+  this.position.set(200, 200);
 
-  this.velocityX = 0;
-  this.velocityY = 0;
+  this.width = 32;
+  this.height = 48;
 
-  this.angularVelocity = 0;
+  this.moveVector = new Vector2();
+};
 
-  this.velocity = new Vector2();
+Enemy.prototype.update = function(deltaTime) {
+  this.sprite.update(deltaTime);
 
-  this.width = 169;
-  this.height = 173;
+  this.moveVector.x = 0;
+  this.moveVector.y = 0;
 
-}
+  this.position.x += this.moveVector.x;
+  this.position.y += this.moveVector.y;
 
-var enemy = new Enemy();
-Enemy.prototype.update = function(dt) {
-  this.sprite.update();
 }
 
 Enemy.prototype.draw = function() {
-  this.sprite.draw(context, this.position.x - worldOffsetX, this.position.y);
+  this.sprite.draw(context, this.position.x, this.position.y);
 }

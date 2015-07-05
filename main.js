@@ -215,7 +215,6 @@ function run() {
       bullets[i].position.x > SCREEN_WIDTH) {
       hit = true;
     }
-
     for (var j = 0; j < enemies.length; j++) {
       if (intersects(bullets[i].position.x, bullets[i].position.y, TILE, TILE) == true) {
         enemies.splice(j, 1);
@@ -238,7 +237,6 @@ function run() {
       }
     }
   }
-
   if (keyboard.isKeyDown(keyboard.KEY_SHOOT) == true) {
     context.fillStyle = "#F02936";
     context.font = "14px Arial"
@@ -262,6 +260,7 @@ function run() {
 }
 
   player.draw();
+  //enemy.draw();
 
   /*  for(var i=0; i<enemies.length; i++)
     {
