@@ -126,17 +126,16 @@ function initialize() {
         if (map.layers[LAYER_OBJECT_ENEMIES].data[idx] != 0) {
           var px = tileToPixel(x);
           var py = tileToPixel(y);
-          var e = new Enemy(px, py);
+          var e = new Enemy();
           enemies.push(e);
         }
         idx++;
       }
     }
 
-}
+  }
 
-  musicBackground = new Howl(
-  {
+  musicBackground = new Howl({
     urls: ["bensound-acousticbreeze.mp3"],
     loop: true,
     buffer: true,
@@ -146,35 +145,38 @@ function initialize() {
 
 }
 
-function playerShoot()
-{
-        var bullet = {
-                image: document.createElement("img"),
-                x: player.position.x,
-                y: player.position.y,
-                width: 5,
-                height: 5,
-                velocityX: 0,
-                velocityY: 0,
-        };
+function rand(floor, ceil) {
+  return Math.floor((Math.random() * (ceil - floor)) + floor);
+}
 
-        bullet.image.src = "bullet.png";
+function playerShoot() {
+  var bullet = {
+    image: document.createElement("img"),
+    x: player.position.x,
+    y: player.position.y,
+    width: 5,
+    height: 5,
+    velocityX: 0,
+    velocityY: 0,
+  };
 
-        var BULLET_SPEED = 6;
+  bullet.image.src = "bullet.png";
 
-        var velX = 0;
-        var velY = 1;
+  var BULLET_SPEED = 6;
 
-        var s = Math.sin(player.rotation);
-        var c = Math.cos(player.rotation);
+  var velX = 0;
+  var velY = 1;
 
-        var xVel = (velX * c) - (velY * s);
-        var yVel = (velX * s) + (velY * c);
+  var s = Math.sin(player.rotation);
+  var c = Math.cos(player.rotation);
 
-        bullet.velocityX = xVel * BULLET_SPEED;
-        bullet.velocityY = yVel * BULLET_SPEED;
+  var xVel = (velX * c) - (velY * s);
+  var yVel = (velX * s) + (velY * c);
 
-        bullets.push(bullet);
+  bullet.velocityX = xVel * BULLET_SPEED;
+  bullet.velocityY = yVel * BULLET_SPEED;
+
+  bullets.push(bullet);
 };
 
 function intersects(x1, y1, w1, h1, x2, y2, w2, h2) {
@@ -207,6 +209,8 @@ function run() {
   context.fillText(scoreText, SCREEN_WIDTH - 170, 52);
   var scoreText = "Up: " + (keyboard.isKeyDown(87));
   context.fillText(scoreText, SCREEN_WIDTH - 170, 70);
+  var scoreText = "Random: " + (rand(1,4));
+  context.fillText(scoreText, SCREEN_WIDTH - 170, 88);
 
   /*var hit = false;
   for (var i = 0; i < bullets.length; i++) {
@@ -243,35 +247,34 @@ function run() {
     context.fillText("Click!", SCREEN_WIDTH - 170, 35);
   }*/
 
-  for(var i=0; i<bullets.length; i++)
-{
-     bullets[i].x += bullets[i].velocityX;
-     bullets[i].y += bullets[i].velocityY;
+  for (var i = 0; i < bullets.length; i++) {
+    bullets[i].x += bullets[i].velocityX;
+    bullets[i].y += bullets[i].velocityY;
 
-        if(bullets[i].x < -bullets[i].width ||
-                bullets[i].x > SCREEN_WIDTH    ||
-                bullets[i].y < -bullets[i].height ||
-                bullets[i].y > SCREEN_HEIGHT)
-        {
-                bullets.splice(i, 1);
+    if (bullets[i].x < -bullets[i].width ||
+      bullets[i].x > SCREEN_WIDTH ||
+      bullets[i].y < -bullets[i].height ||
+      bullets[i].y > SCREEN_HEIGHT) {
+      bullets.splice(i, 1);
 
-                break;
-        }
-}
+      break;
+    }
+  }
 
-  player.draw();
-  //enemy.draw();
-
-  /*  for(var i=0; i<enemies.length; i++)
+  for(var i=0; i<enemies.length; i++)
     {
         enemies[i].update(deltaTime);
-    }*/
-    for(var i=0; i<bullets.length; i++)
-                    {
-                            context.drawImage(bullets[i].image,
-                            bullets[i].x - bullets[i].width/2,
-                            bullets[i].y - bullets[i].height/2);
-                    }
+    }
+
+  player.draw();
+  enemy.draw();
+
+
+  for (var i = 0; i < bullets.length; i++) {
+    context.drawImage(bullets[i].image,
+      bullets[i].x - bullets[i].width / 2,
+      bullets[i].y - bullets[i].height / 2);
+  }
 
 }
 initialize();
