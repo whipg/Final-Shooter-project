@@ -80,18 +80,12 @@ Player.prototype.update = function(deltaTime) {
   this.position.x += this.moveVector.x;
   this.position.y += this.moveVector.y;
 
-  if(cooldownTimer>0)
-  {
-    cooldownTimer -= deltaTime;
-  }
 
   if(keyboard.isKeyDown(keyboard.KEY_SHOOT) == true)
   {
-   // cooldownTimer = 0.3;
+    playerShoot();
 
-    //playerShoot();
-
-   var tempBullet = new Bullet(this.position.x, this.position.y);
+   /*var tempBullet = new Bullet(this.position.x, this.position.y);
     if(right == true)
     {
       tempBullet.velocity.x = 400;
@@ -114,7 +108,7 @@ Player.prototype.update = function(deltaTime) {
     }
 
     cooldownTimer = 0.5;
-    bullets.push(tempBullet);
+    bullets.push(tempBullet);*/
   }
 }
 
