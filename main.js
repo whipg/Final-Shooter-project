@@ -30,7 +30,7 @@ var player = new Player();
 var keyboard = new Keyboard();
 var enemy = new Enemy();
 var position = new Vector2();
-var bullet = new Bullet();
+
 var LAYER_COUNT = 3;
 var LAYER_BACKGROUND = 0;
 var LAYER_OBJECT_ENEMIES = 1;
