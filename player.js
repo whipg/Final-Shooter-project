@@ -49,28 +49,28 @@ Player.prototype.update = function(deltaTime) {
     this.moveVector.x = 100 * deltaTime;
     this.direction = RIGHT;
     right = true;
-    this.rotation = 90;
+    this.rotation = 0;
     if (this.sprite.currentAnimation != ANIM_WALK_RIGHT)
       this.sprite.setAnimation(ANIM_WALK_RIGHT);
   } else if (keyboard.isKeyDown(keyboard.KEY_LEFT)) {
     this.moveVector.x = -100 * deltaTime;
     this.direction = LEFT;
     left = true;
-    this.rotation = 270;
+    this.rotation = 180;
     if (this.sprite.currentAnimation != ANIM_WALK_LEFT)
       this.sprite.setAnimation(ANIM_WALK_LEFT);
   } else if (keyboard.isKeyDown(keyboard.KEY_DOWN)) {
     this.moveVector.y = 100 * deltaTime;
     this.direction = DOWN;
     down = true;
-    this.rotation = 180;
+    this.rotation = 270;
     if (this.sprite.currentAnimation != ANIM_WALK_DOWN)
       this.sprite.setAnimation(ANIM_WALK_DOWN);
   } else if (keyboard.isKeyDown(keyboard.KEY_UP)) {
     this.moveVector.y = -100 * deltaTime;
     this.direction = UP;
     up = true;
-    this.rotation = 0;
+    this.rotation = 90;
     if (this.sprite.currentAnimation != ANIM_WALK_UP)
       this.sprite.setAnimation(ANIM_WALK_UP);
   } else {

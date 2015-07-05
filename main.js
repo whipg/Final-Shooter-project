@@ -246,6 +246,22 @@ function run() {
     context.fillText("Click!", SCREEN_WIDTH - 170, 35);
   }*/
 
+  for(var i=0; i<bullets.length; i++)
+{
+     bullets[i].x += bullets[i].velocityX;
+     bullets[i].y += bullets[i].velocityY;
+
+        if(bullets[i].x < -bullets[i].width ||
+                bullets[i].x > SCREEN_WIDTH    ||
+                bullets[i].y < -bullets[i].height ||
+                bullets[i].y > SCREEN_HEIGHT)
+        {
+                bullets.splice(i, 1);
+
+                break;
+        }
+}
+
   player.draw();
 
   /*  for(var i=0; i<enemies.length; i++)
