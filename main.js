@@ -121,7 +121,7 @@ function initialize() {
     cells[layerIdx] = [];
     var idx = 0;
     idx = 0;
-    for (var y = 0; y < map.layers[LAYER_OBJECT_ENEMIES].height; y++) {
+  /*  for (var y = 0; y < map.layers[LAYER_OBJECT_ENEMIES].height; y++) {
       for (var x = 0; x < map.layers[LAYER_OBJECT_ENEMIES].width; x++) {
         if (map.layers[LAYER_OBJECT_ENEMIES].data[idx] != 0) {
           var px = tileToPixel(x);
@@ -131,7 +131,7 @@ function initialize() {
         }
         idx++;
       }
-    }
+    }*/
 
   }
 
@@ -179,6 +179,35 @@ function playerShoot() {
   bullets.push(bullet);
 };
 
+function spawnEnemy() {
+  var type = rand(0, 3);
+
+  var ENEMY_SPEED = 500;
+
+  var dirX = rand(-10, 10);
+  var dirY = rand(-10, 10);
+
+  var magnitude = (dirX * dirX) + (dirY * dirY);
+  if (magnitude != 0) {
+    var oneOverMag = 1 / Math.sqrt(magnitude);
+    dirX *= oneOverMag;
+    dirY *= oneOverMag;
+  }
+  var movX = dirX * SCREEN_WIDTH;
+  var movY = dirY * SCREEN_HEIGHT;
+
+  var x = SCREEN_WIDTH/2;
+  var y = SCREEN_HEIGHT/2;
+
+  enemy.x = x + movX;
+  enemy.y = y + movY;
+
+  enemy.velocityX = -dirX * ENEMY_SPEED;
+  enemy.velocityY = -dirY * ENEMY_SPEED;
+
+  enemies.push(enemy);
+}
+
 function intersects(x1, y1, w1, h1, x2, y2, w2, h2) {
   if (y2 + h2 < y1 ||
     x2 + w2 < x1 ||
@@ -209,43 +238,31 @@ function run() {
   context.fillText(scoreText, SCREEN_WIDTH - 170, 52);
   var scoreText = "Up: " + (keyboard.isKeyDown(87));
   context.fillText(scoreText, SCREEN_WIDTH - 170, 70);
-  var scoreText = "Random: " + (rand(1,4));
+  var scoreText = "Random: " + (rand(1, 4));
   context.fillText(scoreText, SCREEN_WIDTH - 170, 88);
 
-  /*var hit = false;
-  for (var i = 0; i < bullets.length; i++) {
-    bullets[i].update(deltaTime);
-    if (bullets[i].position.x < 0 ||
-      bullets[i].position.x > SCREEN_WIDTH) {
-      hit = true;
-    }
-    for (var j = 0; j < enemies.length; j++) {
-      if (intersects(bullets[i].position.x, bullets[i].position.y, TILE, TILE) == true) {
-        enemies.splice(j, 1);
-        hit = true;
-        break;
-      }
-    }
-    if (hit == true) {
-      bullets.splice(i, 1);
-      break;
+  var spawnTimer = 0;
+  spawnTimer -= deltaTime;
+  if (enemies.length < 7) {
+    if (spawnTimer <= 0) {
+      spawnTimer = 3;
+      spawnEnemy();
     }
   }
-  for (var j = 0; j < enemies.length; j++) {
-    if (Player.isDead = false) {
-      if (intersects(enemies[j].position.x, enemies[j].position.y, TILE, TILE, Player.position.x, Player.position.y, Player.width / 2, Player.height / 2) == true) {
-        lives -= 1;
-        player.position.set(2 * 35, 17 * 35);
-        sfxDamage.play();
-        break;
+
+  for (var i = 0; i < enemies.length; i++) {
+    for (var j = 0; j < bullets.length; j++) {
+      if (intersects(
+          bullets[j].x, bullets[j].y,
+          bullets[j].width, bullets[j].height,
+          enemies[i].position.x, enemies[i].position.y,
+          enemies[i].width, enemies[i].height) == true) {
+        enemies.splice(i, 1);
+        bullets.splice(j, 1);
+
       }
     }
   }
-  if (keyboard.isKeyDown(keyboard.KEY_SHOOT) == true) {
-    context.fillStyle = "#F02936";
-    context.font = "14px Arial"
-    context.fillText("Click!", SCREEN_WIDTH - 170, 35);
-  }*/
 
   for (var i = 0; i < bullets.length; i++) {
     bullets[i].x += bullets[i].velocityX;
@@ -261,10 +278,9 @@ function run() {
     }
   }
 
-  for(var i=0; i<enemies.length; i++)
-    {
-        enemies[i].update(deltaTime);
-    }
+  for (var i = 0; i < enemies.length; i++) {
+    enemies[i].update(deltaTime);
+  }
 
   player.draw();
   enemy.draw();

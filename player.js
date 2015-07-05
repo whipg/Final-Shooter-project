@@ -22,7 +22,7 @@ var Player = function() {
   this.sprite.setLoop(0, false);
 
   this.position = new Vector2();
-  this.position.set(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+  this.position.set(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 
   this.width = 32;
   this.height = 48;
@@ -81,33 +81,32 @@ Player.prototype.update = function(deltaTime) {
   this.position.y += this.moveVector.y;
 
 
-  if(keyboard.isKeyDown(keyboard.KEY_SHOOT) == true)
-  {
+  if (keyboard.isKeyDown(keyboard.KEY_SHOOT) == true) {
     playerShoot();
 
-   /*var tempBullet = new Bullet(this.position.x, this.position.y);
-    if(right == true)
-    {
-      tempBullet.velocity.x = 400;
-      //tempBullet.position.x += 5;
-    }
-    else if(left == true)
-    {
-      tempBullet.velocity.x = -400;
-      //tempBullet.position.x += 5;
-    }
-    else if(up == true)
-    {
-      tempBullet.velocity.y = -400;
-      //tempBullet.position.y += 5;
-    }
-    else if(down == true)
-    {
-      tempBullet.velocity.y = 400;
-      //tempBullet.position.y += 5;
-    }
-    cooldownTimer = 0.5;
-    bullets.push(tempBullet);*/
+    /*var tempBullet = new Bullet(this.position.x, this.position.y);
+     if(right == true)
+     {
+       tempBullet.velocity.x = 400;
+       //tempBullet.position.x += 5;
+     }
+     else if(left == true)
+     {
+       tempBullet.velocity.x = -400;
+       //tempBullet.position.x += 5;
+     }
+     else if(up == true)
+     {
+       tempBullet.velocity.y = -400;
+       //tempBullet.position.y += 5;
+     }
+     else if(down == true)
+     {
+       tempBullet.velocity.y = 400;
+       //tempBullet.position.y += 5;
+     }
+     cooldownTimer = 0.5;
+     bullets.push(tempBullet);*/
   }
 }
 
