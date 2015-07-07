@@ -7,8 +7,8 @@ var Enemy = function() {
 
   this.position = new Vector2();
 
-  this.width = 498;
-  this.height = 292;
+  this.width = 133;
+  this.height = 100;
 
   this.moveVector = new Vector2();
 };
