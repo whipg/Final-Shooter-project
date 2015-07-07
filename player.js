@@ -81,7 +81,8 @@ Player.prototype.update = function(deltaTime) {
   this.position.y += this.moveVector.y;
 
 
-  if (keyboard.isKeyDown(keyboard.KEY_SHOOT) == true) {
+  if (keyboard.isKeyDown(keyboard.KEY_SHOOT) == true && shootTimer <= 0) {
+    shootTimer += 0.3;
     playerShoot();
 
     /*var tempBullet = new Bullet(this.position.x, this.position.y);

@@ -23,6 +23,14 @@ function getDeltaTime() {
   return deltaTime;
 }
 
+var deltaTime = getDeltaTime();
+
+var STATE_SPLASH = 0;
+var STATE_GAME = 1;
+var STATE_GAMEOVER = 2;
+
+var gameState = STATE_SPLASH;
+
 var SCREEN_WIDTH = canvas.width;
 var SCREEN_HEIGHT = canvas.height;
 
@@ -59,6 +67,11 @@ var enemies = [];
 var bullets = [];
 var tileset = document.createElement("img");
 tileset.src = "0.png";
+
+var splashScreen = document.createElement("img");
+splashScreen.src = "splashScreen.png";
+
+var shootTimer = 0;
 
 function cellAtPixelCoord(layer, x, y) {
   if (x < 0 || x > SCREEN_WIDTH || y < 0)
@@ -121,17 +134,17 @@ function initialize() {
     cells[layerIdx] = [];
     var idx = 0;
     idx = 0;
-  /*  for (var y = 0; y < map.layers[LAYER_OBJECT_ENEMIES].height; y++) {
-      for (var x = 0; x < map.layers[LAYER_OBJECT_ENEMIES].width; x++) {
-        if (map.layers[LAYER_OBJECT_ENEMIES].data[idx] != 0) {
-          var px = tileToPixel(x);
-          var py = tileToPixel(y);
-          var e = new Enemy();
-          enemies.push(e);
+    /*  for (var y = 0; y < map.layers[LAYER_OBJECT_ENEMIES].height; y++) {
+        for (var x = 0; x < map.layers[LAYER_OBJECT_ENEMIES].width; x++) {
+          if (map.layers[LAYER_OBJECT_ENEMIES].data[idx] != 0) {
+            var px = tileToPixel(x);
+            var py = tileToPixel(y);
+            var e = new Enemy();
+            enemies.push(e);
+          }
+          idx++;
         }
-        idx++;
-      }
-    }*/
+      }*/
 
   }
 
@@ -143,10 +156,6 @@ function initialize() {
   });
   musicBackground.play();
 
-}
-
-function rand(floor, ceil) {
-  return Math.floor((Math.random() * (ceil - floor)) + floor);
 }
 
 function playerShoot() {
@@ -196,8 +205,8 @@ function spawnEnemy() {
   var movX = dirX * SCREEN_WIDTH;
   var movY = dirY * SCREEN_HEIGHT;
 
-  var x = SCREEN_WIDTH/2;
-  var y = SCREEN_HEIGHT/2;
+  var x = SCREEN_WIDTH / 2;
+  var y = SCREEN_HEIGHT / 2;
 
   enemy.x = x + movX;
   enemy.y = y + movY;
@@ -206,6 +215,10 @@ function spawnEnemy() {
   enemy.velocityY = -dirY * ENEMY_SPEED;
 
   enemies.push(enemy);
+}
+
+function rand(floor, ceil) {
+  return Math.floor((Math.random() * (ceil - floor)) + floor);
 }
 
 function intersects(x1, y1, w1, h1, x2, y2, w2, h2) {
@@ -218,12 +231,14 @@ function intersects(x1, y1, w1, h1, x2, y2, w2, h2) {
   return true;
 }
 
-function run() {
-  context.fillStyle = "#ccc";
-  context.fillRect(0, 0, canvas.width, canvas.height);
-  //context.drawImage(background, 0, 0);
+function runSplash(deltaTime) {
+  context.drawImage(splashScreen, 0, 0);
+  if (keyboard.isKeyDown(13) == true)
+    gameState = STATE_GAME;
+  return;
+}
 
-  var deltaTime = getDeltaTime();
+function runGame(deltaTime) {
 
   drawMap();
   player.update(deltaTime);
@@ -290,6 +305,29 @@ function run() {
     context.drawImage(bullets[i].image,
       bullets[i].x - bullets[i].width / 2,
       bullets[i].y - bullets[i].height / 2);
+  }
+
+  if(shootTimer > 0)
+    shootTimer -= deltaTime;
+}
+
+function run() {
+  context.fillStyle = "#ccc";
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  //context.drawImage(background, 0, 0);
+
+  var deltaTime = getDeltaTime();
+
+  switch (gameState) {
+    case STATE_SPLASH:
+      runSplash(deltaTime);
+      break;
+    case STATE_GAME:
+      runGame(deltaTime);
+      break;
+    case STATE_GAMEOVER:
+      runGameOver(deltaTime);
+      break;
   }
 
 }
