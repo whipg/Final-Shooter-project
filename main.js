@@ -60,6 +60,8 @@ var bullets = [];
 var tileset = document.createElement("img");
 tileset.src = "0.png";
 
+var score = 0;
+
 function cellAtPixelCoord(layer, x, y) {
   if (x < 0 || x > SCREEN_WIDTH || y < 0)
     return 1;
@@ -240,6 +242,13 @@ function run() {
   context.fillText(scoreText, SCREEN_WIDTH - 170, 70);
   var scoreText = "Random: " + (rand(1, 4));
   context.fillText(scoreText, SCREEN_WIDTH - 170, 88);
+  
+   // score
+context.fillStyle = "yellow";
+context.font="32px Arial";
+var scoreText = "Score: " + score;
+context.fillText(scoreText, SCREEN_WIDTH - 130, 35);
+
 
   var spawnTimer = 0;
   spawnTimer -= deltaTime;
