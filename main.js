@@ -77,6 +77,8 @@ gameOverScreen.src = "gameOver.png";
 var heart = document.createElement("img");
 heart.src = "Heart.png";
 
+var debug = 0; //Change to 1 to show debug menu
+
 var shootTimer = 0;
 var score = 0;
 var lives = 3;
@@ -257,19 +259,20 @@ function runGame(deltaTime) {
   fireEmitter.update(deltaTime);
 
           fireEmitter.draw();
-
+/*if(debug = 1){
   context.fillStyle = "yellow";
   context.font = "16px Arial";
-  var scoreText = "Right: " + (keyboard.isKeyDown(68));
+  var debugText = "Right: " + (keyboard.isKeyDown(68));
   context.fillText(scoreText, SCREEN_WIDTH - 170, 16 + 100);
-  var scoreText = "Left: " + (keyboard.isKeyDown(65));
+  var debugText = "Left: " + (keyboard.isKeyDown(65));
   context.fillText(scoreText, SCREEN_WIDTH - 170, 34 + 100);
-  var scoreText = "Down: " + (keyboard.isKeyDown(83));
+  var debugText = "Down: " + (keyboard.isKeyDown(83));
   context.fillText(scoreText, SCREEN_WIDTH - 170, 52 + 100);
-  var scoreText = "Up: " + (keyboard.isKeyDown(87));
+  var debugText = "Up: " + (keyboard.isKeyDown(87));
   context.fillText(scoreText, SCREEN_WIDTH - 170, 70 + 100);
-  var scoreText = "Random: " + (rand(1, 4));
+  var debugText = "Random: " + (rand(1, 4));
   context.fillText(scoreText, SCREEN_WIDTH - 170, 88 + 100);
+}*/
 
    // score
 context.fillStyle = "yellow";
