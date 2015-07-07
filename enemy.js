@@ -20,13 +20,13 @@ Enemy.prototype.update = function(deltaTime) {
   this.moveVector.y = 0;
 
   if (rand(1, 4) == 1)
-    this.moveVector.x = -1 * deltaTime; //Left
+    this.moveVector.x = -100 * deltaTime; //Left
   if (rand(1, 4) == 2)
-    this.moveVector.x = 1 * deltaTime;
+    this.moveVector.x = 100 * deltaTime;
   if (rand(1, 4) == 3)
-    this.moveVector.y = 1 * deltaTime;
+    this.moveVector.y = 100 * deltaTime;
   if (rand(1, 4) == 4)
-    this.moveVector.y = -1 * deltaTime;
+    this.moveVector.y = -100 * deltaTime;
 
   this.position.x += this.moveVector.x;
   this.position.y += this.moveVector.y;

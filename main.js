@@ -307,6 +307,11 @@ context.fillText(scoreText, SCREEN_WIDTH - 160, 35);
     }
   }
 
+  for(var i = 0; i < enemies.length; i++)
+  {
+    
+  }
+
   for (var i = 0; i < enemies.length; i++) {
     enemies[i].update(deltaTime);
   }
