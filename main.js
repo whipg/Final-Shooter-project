@@ -241,8 +241,14 @@ function runSplash(deltaTime) {
 
 function runGame(deltaTime) {
 
+  var fireEmitter = createFireEmitter("fire.png", enemy.position.x, enemy.position.y);
+
   drawMap();
   player.update(deltaTime);
+
+  fireEmitter.update(deltaTime);
+
+          fireEmitter.draw();
 
   context.fillStyle = "yellow";
   context.font = "16px Arial";
