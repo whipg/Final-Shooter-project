@@ -80,6 +80,7 @@ heart.src = "Heart.png";
 var shootTimer = 0;
 var score = 0;
 var lives = 3;
+var damageTimer = 1;
 
 function cellAtPixelCoord(layer, x, y) {
   if (x < 0 || x > SCREEN_WIDTH || y < 0)
@@ -320,8 +321,9 @@ context.fillText(scoreText, SCREEN_WIDTH - 160, 35);
       enemies[i].position.x, enemies[i].position.y,
       enemies[i].width, enemies[i].height,
       player.position.x, player.position.y,
-      player.width, player.height) == true) {
+      player.width, player.height) == true && damageTimer <= 0) {
         lives -= 1;
+        damageTimer = 1;
       }
   }
 
@@ -358,6 +360,8 @@ context.fillText(scoreText, SCREEN_WIDTH - 160, 35);
 
   if(shootTimer > 0)
     shootTimer -= deltaTime;
+  if(damageTimer > 0)
+    damageTimer -= deltaTime;
 
   if(lives <= 0)
   {
