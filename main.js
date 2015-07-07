@@ -71,8 +71,15 @@ tileset.src = "0.png";
 var splashScreen = document.createElement("img");
 splashScreen.src = "splashScreen.png";
 
+var gameOverScreen = document.createElement("img");
+gameOverScreen.src = "gameOver.png";
+
+var heart = document.createElement("img");
+heart.src = "Heart.png";
+
 var shootTimer = 0;
 var score = 0;
+var lives = 3;
 
 function cellAtPixelCoord(layer, x, y) {
   if (x < 0 || x > SCREEN_WIDTH || y < 0)
@@ -309,16 +316,39 @@ context.fillText(scoreText, SCREEN_WIDTH - 160, 35);
 
   for(var i = 0; i < enemies.length; i++)
   {
-    
+    if(intersects(
+      enemies[i].position.x, enemies[i].position.y,
+      enemies[i].width, enemies[i].height,
+      player.position.x, player.position.y,
+      player.width, player.height) == true) {
+        lives -= 1;
+      }
   }
 
   for (var i = 0; i < enemies.length; i++) {
     enemies[i].update(deltaTime);
+
+    if (enemies[i].position.x > SCREEN_WIDTH + enemies[i].width + 1) {
+      enemies[i].position.x = 0 - enemies[i].width;
+    };
+    if (enemies[i].position.x < 0 - enemies[i].width - 1) {
+      enemies[i].position.x = SCREEN_WIDTH + enemies[i].width;
+    };
+    if (enemies[i].position.y > SCREEN_HEIGHT + enemies[i].height) {
+      enemies[i].position.y = 0 - enemies[i].height;
+    };
+    if (enemies[i].position.y < 0 - enemies[i].height) {
+      enemies[i].position.y = SCREEN_HEIGHT + enemies[i].height;
+    };
   }
 
   player.draw();
   enemy.draw();
 
+  for(var i=0; i<lives; i++)
+  {
+    context.drawImage(heart, 20+ ((heart.width + 2) * i), 10);
+  }
 
   for (var i = 0; i < bullets.length; i++) {
     context.drawImage(bullets[i].image,
@@ -328,6 +358,18 @@ context.fillText(scoreText, SCREEN_WIDTH - 160, 35);
 
   if(shootTimer > 0)
     shootTimer -= deltaTime;
+
+  if(lives <= 0)
+  {
+    gameState = STATE_GAMEOVER;
+  }
+}
+
+function runGameOver() {
+  context.drawImage(gameOverScreen, 0, 0);
+  context.fillStyle = "white";
+  context.font = "42px Arial";
+  context.fillText(score, SCREEN_WIDTH/2, SCREEN_HEIGHT/2 + 20);
 }
 
 function run() {
