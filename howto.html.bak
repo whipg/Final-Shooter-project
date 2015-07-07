@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=windows-1252" http-equiv="content-type">
+<title>howto.html</title>
+<style type="text/css">
+#Title {
+font-size: 200%;
+}
+
+</style></head>
+<body>
+<p id="Title">HOW TO PLAY</p>
+<p><br>
+</p>
+<p>W = UP</p>
+<p>A = LEFT</p>
+<p>D = RIGHT</p>
+<p>S = DOWN</p>
+<p>SPACE = SHOOT</p>
+</body>
+</html>
