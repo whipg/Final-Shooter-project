@@ -247,21 +247,21 @@ function runGame(deltaTime) {
   context.fillStyle = "yellow";
   context.font = "16px Arial";
   var scoreText = "Right: " + (keyboard.isKeyDown(68));
-  context.fillText(scoreText, SCREEN_WIDTH - 170, 16);
+  context.fillText(scoreText, SCREEN_WIDTH - 170, 16 + 100);
   var scoreText = "Left: " + (keyboard.isKeyDown(65));
-  context.fillText(scoreText, SCREEN_WIDTH - 170, 34);
+  context.fillText(scoreText, SCREEN_WIDTH - 170, 34 + 100);
   var scoreText = "Down: " + (keyboard.isKeyDown(83));
-  context.fillText(scoreText, SCREEN_WIDTH - 170, 52);
+  context.fillText(scoreText, SCREEN_WIDTH - 170, 52 + 100);
   var scoreText = "Up: " + (keyboard.isKeyDown(87));
-  context.fillText(scoreText, SCREEN_WIDTH - 170, 70);
+  context.fillText(scoreText, SCREEN_WIDTH - 170, 70 + 100);
   var scoreText = "Random: " + (rand(1, 4));
-  context.fillText(scoreText, SCREEN_WIDTH - 170, 88);
+  context.fillText(scoreText, SCREEN_WIDTH - 170, 88 + 100);
 
    // score
 context.fillStyle = "yellow";
 context.font="32px Arial";
 var scoreText = "Score: " + score;
-context.fillText(scoreText, SCREEN_WIDTH - 130, 35);
+context.fillText(scoreText, SCREEN_WIDTH - 160, 35);
 
 
   var spawnTimer = 0;
@@ -282,7 +282,7 @@ context.fillText(scoreText, SCREEN_WIDTH - 130, 35);
           enemies[i].width, enemies[i].height) == true) {
         enemies.splice(i, 1);
         bullets.splice(j, 1);
-
+        score += 1;
       }
     }
   }
